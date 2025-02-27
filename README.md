@@ -41,7 +41,7 @@ _(Feel free to link to an itch.io download page!)_
 - **Tools:** **[Add them]**
 
 ## 👥 Team Members
-- [Jérémy](https://github.com/Mukki) - Developer
+- [Jérémy Bouchard](https://github.com/Mukki) - Developer
 - **[Your Name](https://yourportfolio.com)** - Role (e.g., Programmer)
 - **[Teammate Name](https://teammateportfolio.com)** - Role (e.g., Artist)
 - **[Teammate Name](https://teammateportfolio.com)** - Role (e.g., Sound Designer)
@@ -51,4 +51,4 @@ This project is MIT licensed. You are free to play it, redistribute it or modify
 
 ## 💌 Special Thanks
 *(Shoutout to tools, tutorials, or people who helped!)*
-- The ever excellent @gableroux, for its creation of game-ci! 🚀🔥
+- The ever excellent [Gabriel Le Breton](https://github.com/GabLeRoux), for its work on [Game CI](https://game.ci/) that we use to build and deploy our WebGL version on Github Pages! 🚀🔥
