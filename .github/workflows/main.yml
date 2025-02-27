@@ -1,10 +1,13 @@
-name: Actions 😎
+name: Deploying a Unity game! 😎
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-    name: Build my project ✨
+    name: Build WebGL ✨
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -36,3 +39,24 @@ jobs:
         with:
           name: Build
           path: build
+          
+  deploy:
+    name: Deploy to GitHub Pages ✨
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: Build
+          path: build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build
+          branch: gh-pages
