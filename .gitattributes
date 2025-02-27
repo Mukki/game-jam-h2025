@@ -1,4 +1,5 @@
 *.wasm binary
 *.data binary
-*.js text/javascript
-*.json text/json
+*.data.unityweb binary
+*.wasm.unityweb binary
+*.framework.js.unityweb binary
