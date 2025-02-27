@@ -30,6 +30,7 @@ _(Feel free to adjust controls for your game!)_
 [🔗 Play Now](https://mukki.github.io/game-jam-h2025/)
 
 ### ⬇️ Download
+_(Feel free to link to an itch.io download page!)_
 - **[Windows]**
 - **[macOS]**
 - **[Linux]**
@@ -40,6 +41,7 @@ _(Feel free to adjust controls for your game!)_
 - **Tools:** **[Add them]**
 
 ## 👥 Team Members
+- [Jérémy](https://github.com/Mukki) - Developer
 - **[Your Name](https://yourportfolio.com)** - Role (e.g., Programmer)
 - **[Teammate Name](https://teammateportfolio.com)** - Role (e.g., Artist)
 - **[Teammate Name](https://teammateportfolio.com)** - Role (e.g., Sound Designer)
