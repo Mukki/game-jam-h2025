@@ -1,0 +1,4 @@
+*.wasm binary
+*.data binary
+*.js text/javascript
+*.json text/json
