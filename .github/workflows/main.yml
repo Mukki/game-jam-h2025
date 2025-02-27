@@ -18,7 +18,7 @@ jobs:
 
       # Cache
       - name: Use caching
-      - uses: actions/cache@v3
+        uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
@@ -45,7 +45,7 @@ jobs:
 
       # Output
       - name: Upload build artefact
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: Build
           path: build
@@ -57,7 +57,7 @@ jobs:
     steps:
       # Get repository
       - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       # Get the build artefact
       - name: Download Build Artifacts
