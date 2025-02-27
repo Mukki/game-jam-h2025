@@ -38,10 +38,10 @@ jobs:
       # Gzip file shenanigan
       - name: Rename Gzip Files for GitHub Pages
         run: |
-          mv build/WebGL/WebGL/Build/WebGL.data.gz build/WebGL/WebGL/Build/WebGL.data
-          mv build/WebGL/WebGL/Build/WebGL.wasm.gz build/WebGL/WebGL/Build/WebGL.wasm
-          mv build/WebGL/WebGL/Build/WebGL.framework.js.gz build/WebGL/WebGL/Build/WebGL.framework.js
-          mv build/WebGL/WebGL/Build/WebGL.loader.js.gz build/WebGL/WebGL/Build/WebGL.loader.js
+          sudo mv build/WebGL/WebGL/Build/WebGL.data.gz build/WebGL/WebGL/Build/WebGL.data
+          sudo mv build/WebGL/WebGL/Build/WebGL.wasm.gz build/WebGL/WebGL/Build/WebGL.wasm
+          sudo mv build/WebGL/WebGL/Build/WebGL.framework.js.gz build/WebGL/WebGL/Build/WebGL.framework.js
+          sudo mv build/WebGL/WebGL/Build/WebGL.loader.js.gz build/WebGL/WebGL/Build/WebGL.loader.js
 
       # Output
       - name: Upload build artefact
