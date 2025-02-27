@@ -57,7 +57,7 @@ jobs:
     steps:
       # Get repository
       - name: Checkout Repository
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       # Get the build artefact
       - name: Download Build Artifacts
