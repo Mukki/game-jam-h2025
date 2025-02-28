@@ -34,17 +34,6 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-      
-      # Gzip file shenanigan
-      - name: Rename Gzip Files for GitHub Pages
-        run: |
-          sudo mv build/WebGL/WebGL/Build/WebGL.data.gz build/WebGL/WebGL/Build/WebGL.data
-          sudo mv build/WebGL/WebGL/Build/WebGL.wasm.gz build/WebGL/WebGL/Build/WebGL.wasm
-          sudo mv build/WebGL/WebGL/Build/WebGL.framework.js.gz build/WebGL/WebGL/Build/WebGL.framework.js
-
-      # index.html file shenanigan    
-      - name: Fix index.html to remove .gz references
-        run: sudo sed -i 's/\.gz//g' build/WebGL/WebGL/index.html
 
       # Output
       - name: Upload build artefact
