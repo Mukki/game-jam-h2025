@@ -44,7 +44,7 @@ jobs:
 
       # index.html file shenanigan    
       - name: Fix index.html to remove .gz references
-        run: sed -i 's/\.gz//g' build/WebGL/WebGL/index.html
+        run: sudo sed -i 's/\.gz//g' build/WebGL/WebGL/index.html
 
       # Output
       - name: Upload build artefact
