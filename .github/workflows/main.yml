@@ -42,6 +42,10 @@ jobs:
           sudo mv build/WebGL/WebGL/Build/WebGL.wasm.gz build/WebGL/WebGL/Build/WebGL.wasm
           sudo mv build/WebGL/WebGL/Build/WebGL.framework.js.gz build/WebGL/WebGL/Build/WebGL.framework.js
 
+      # index.html file shenanigan    
+      - name: Fix index.html to remove .gz references
+        run: sed -i 's/\.gz//g' build/WebGL/WebGL/index.html
+
       # Output
       - name: Upload build artefact
         uses: actions/upload-artifact@v4
