@@ -13,6 +13,7 @@ public enum Event
     GameEnd,
     MoneyChanged,
     MoneyPreviewReceived
+    SpawnAnimal,
 }
 
 // This implementation does not support params, to add params, see the exemple below

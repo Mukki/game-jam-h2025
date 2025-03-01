@@ -1,36 +1,61 @@
 using UnityEngine;
 
-public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
+public abstract class Singleton<T> : Singleton where T : Singleton<T>
 {
-    public static T Instance { get; private set; }
+    private static T _instance;
+    private static readonly object _lock = new();
 
-    public virtual void Awake()
-    {
-        if (Instance != null)
-        {
-            Debug.LogError("There are multiple instance of " + GetType().ToString());
-        }
-        else
-        {
-            Instance = this as T;
-        }
+    [SerializeField]
+    private bool _persistent = true;
 
-        DontDestroyOnLoad(this);
-    }
-
-    public virtual void OnDestroy()
-    {
-        if (Instance == gameObject)
-        {
-            Instance = null;
-        }
-    }
-
-    protected static bool IsAvailable
+    public static T Instance
     {
         get
         {
-            return Instance != null;
+            if (Quitting)
+            {
+                return null;
+            }
+            lock (_lock)
+            {
+                if (_instance != null)
+                    return _instance;
+                
+                var instances = FindObjectsByType<T>(FindObjectsSortMode.None);
+                var count = instances.Length;
+
+                if (count == 1)
+                    return _instance = instances[0];
+
+                if (count > 0)
+                {
+                    for (var i = 1; i < instances.Length; i++)
+                        Destroy(instances[i]);
+
+                    return _instance = instances[0];
+                }
+
+                return _instance = new GameObject($"({nameof(Singleton)}){typeof(T)}").AddComponent<T>();
+            }
         }
+    }
+
+    private void Awake()
+    {
+        if (_persistent)
+            DontDestroyOnLoad(gameObject);
+
+        OnAwake();
+    }
+
+    protected virtual void OnAwake() { }
+}
+
+public abstract class Singleton : MonoBehaviour
+{
+    public static bool Quitting { get; private set; }
+    private void OnApplicationQuit()
+    {
+        Quitting = true;
     }
 }
