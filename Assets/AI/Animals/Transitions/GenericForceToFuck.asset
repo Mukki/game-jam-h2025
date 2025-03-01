@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b589c12c5fa989419b6803a2233044d, type: 3}
-  m_Name: SearchFuckBuddyToRandom
+  m_Name: GenericForceToFuck
   m_EditorClassIdentifier: 
-  Decision: {fileID: 11400000, guid: c9c47cf381a974f48a029e26ca9b2720, type: 2}
-  TrueState: {fileID: 11400000, guid: d71cfa014e8f9cb40909a24ce91efc61, type: 2}
+  Decision: {fileID: 11400000, guid: cf6645e41a5aeb94da78d37bbf375d65, type: 2}
+  TrueState: {fileID: 11400000, guid: 50b727e5f024fd0499892257b8ad37d5, type: 2}
   FalseState: {fileID: 11400000, guid: 949058c69e3f7104392f9a151114bfe9, type: 2}

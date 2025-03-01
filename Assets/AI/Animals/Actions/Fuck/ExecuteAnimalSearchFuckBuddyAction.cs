@@ -26,6 +26,7 @@ public class ExecuteAnimalSearchFuckBuddyAction : FSMAction
 
                     tasm.FuckTarget = asm.gameObject;
                     tasm.WillSpawnBaby = false;
+                    tasm.ForceToFuck = true;
                 }
             }
         }

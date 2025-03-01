@@ -417,6 +417,7 @@ MonoBehaviour:
   RandomAnimalState: 0
   FuckTarget: {fileID: 0}
   WillSpawnBaby: 0
+  ForceToFuck: 0
 --- !u!195 &432269053
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -795,7 +796,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.068
+      value: -6.466
       objectReference: {fileID: 0}
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -852,7 +853,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.731
+      value: 2.697
       objectReference: {fileID: 0}
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.y

@@ -25,6 +25,7 @@ public class AnimalStateMachine : BaseStateMachine
 
     public GameObject FuckTarget;
     public bool WillSpawnBaby = false;
+    public bool ForceToFuck = false;
 
     protected override void Awake()
     {
@@ -50,8 +51,7 @@ public class AnimalStateMachine : BaseStateMachine
     public bool IsFuckable(AnimalTypes partnerType)
     {
         return partnerType == _stats.AnimalType 
-            && FuckTarget == null 
-            && RandomAnimalState == AnimalState.WantsToFuck;
+            && FuckTarget == null;
     }
     /********/
 }
