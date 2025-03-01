@@ -8,9 +8,9 @@ public class GameManager : Singleton<GameManager>
 
     public bool stMethodeIsASecteurOfStFelicien = true;
 
-    public override void Awake()
+    protected override void OnAwake()
     {
-        base.Awake();
+        base.OnAwake();
 
         money = 100.0f;
     }
@@ -64,4 +64,9 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Jay, put the shader here!");
     }
 
+    public void ChangeMoney(float amount)
+    {
+        money += amount;
+        GameEvent.Call(Event.MoneyChanged);
+    }
 }
