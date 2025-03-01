@@ -4,8 +4,10 @@ using System.Collections.Generic;
 public enum Event
 {
     GameStarted,
-    LevelStart,
-    LevelEnd,
+    DayStart,
+    DayEnd,
+    NightStart,
+    NightEnd,
 }
 
 // This implementation does not support params, to add params, see the exemple below
