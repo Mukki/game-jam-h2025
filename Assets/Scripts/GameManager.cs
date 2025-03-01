@@ -10,4 +10,10 @@ public class GameManager : Singleton<GameManager>
 
         money = 100.0f;
     }
+
+    public void ChangeMoney(float amount)
+    {
+        money += amount;
+        GameEvent.Call(Event.MoneyChanged);
+    }
 }
