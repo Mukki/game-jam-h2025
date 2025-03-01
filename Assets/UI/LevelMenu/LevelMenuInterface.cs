@@ -13,16 +13,16 @@ public class LevelMenuInterface : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvent.Register(Event.EnableActionButtons, ShowButtons);
-        GameEvent.Register(Event.DisableActionButtons, HideButtons);
+        GameEvent.Register(Event.DayStart, ShowButtons);
+        GameEvent.Register(Event.NightStart, HideButtons);
         GameEvent.Register(Event.MoneyChanged, OnMoneyChanged);
         GameEvent <float>.Register(Event.MoneyPreviewReceived, OnMoneyPreviewReceived);
     }
 
     private void OnDisable()
     {
-        GameEvent.Unregister(Event.EnableActionButtons, ShowButtons);
-        GameEvent.Unregister(Event.DisableActionButtons, HideButtons);
+        GameEvent.Unregister(Event.DayStart, ShowButtons);
+        GameEvent.Unregister(Event.NightStart, HideButtons);
         GameEvent.Unregister(Event.MoneyChanged, OnMoneyChanged);
         GameEvent<float>.Unregister(Event.MoneyPreviewReceived, OnMoneyPreviewReceived);
     }
