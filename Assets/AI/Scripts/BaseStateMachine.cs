@@ -14,7 +14,7 @@ public enum LevelState
 public class BaseStateMachine : MonoBehaviour
 {
     [SerializeField] protected BaseState _InitialState;
-    [SerializeField] private LevelState _levelState = LevelState.LevelLoading;
+    //[SerializeField] private LevelState _levelState = LevelState.LevelLoading;
     
     public BaseState CurrentState;
 
