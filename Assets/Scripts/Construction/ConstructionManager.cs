@@ -13,10 +13,8 @@ public class ConstructionManager : Singleton<ConstructionManager>
 
     public GameObject ghostPreview;
 
-    public override void Awake()
+    protected override void OnAwake()
     {
-        base.Awake();
-
         constructionMarker = Instantiate(constructionMarkerPrefab);
         constructionMarker.SetActive(false);
     }
