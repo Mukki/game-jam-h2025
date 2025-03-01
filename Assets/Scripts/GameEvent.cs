@@ -11,6 +11,7 @@ public enum Event
     EnableActionButtons,
     DisableActionButtons,
     GameEnd,
+    SpawnAnimal,
 }
 
 // This implementation does not support params, to add params, see the exemple below
