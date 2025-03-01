@@ -1,13 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ConstructionType
-{
-    Fence,
-    Light
-}
-
-public class ConstructionManager : MonoBehaviour
+public class ConstructionManager : Singleton<ConstructionManager>
 {
     public int currentConstruction = -1;
     public List<ConstructionBase> allConstructions = new List<ConstructionBase>();
