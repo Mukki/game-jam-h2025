@@ -146,7 +146,7 @@ public class GameEvent<T1, T2> : Singleton<GameEvent<T1, T2>>
 // implementation for 2 params or {T1,T2,T3} for 3 params, etc.
 public class GameEvent<T> : Singleton<GameEvent<T>>
 {
-    readonly IDictionary<GameEvent, Action<T>> _listeners = new SortedDictionary<GameEvent, Action<T>>();
+    readonly IDictionary<Event, Action<T>> _listeners = new SortedDictionary<Event, Action<T>>();
 
     public static void Register(Event eventId, Action<T> callback) => Instance.RegisterImpl(eventId, callback);
 
@@ -154,7 +154,7 @@ public class GameEvent<T> : Singleton<GameEvent<T>>
 
     public static void UnregisterAll() => Instance.UnregisterAllImpl();
 
-    public static void Call(Event eventId) => Instance.CallImpl(eventId);
+    public static void Call(Event eventId, T param) => Instance.CallImpl(eventId, param);
 
     void RegisterImpl(Event eventId, Action<T> callback)
     {
@@ -178,11 +178,11 @@ public class GameEvent<T> : Singleton<GameEvent<T>>
 
     void UnregisterAllImpl() => _listeners.Clear();
 
-    void CallImpl(Event eventId)
+    void CallImpl(Event eventId, T param)
     {
         if (_listeners.ContainsKey(eventId) && _listeners[eventId] != null)
         {
-            _listeners[eventId]();
+            _listeners[eventId](param);
         }
     }
 }
