@@ -6,7 +6,7 @@ public class GameManager : Singleton<GameManager>
     public float lenghOfDay;
     public float lenghOfNight;
 
-    public bool stMethodeIsASecteurOfStFelicien = true;
+    public bool stMethodeIsASecteurOfStFelicien = false;
 
     protected override void OnAwake()
     {
