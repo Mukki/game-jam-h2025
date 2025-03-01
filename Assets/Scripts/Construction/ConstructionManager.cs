@@ -76,5 +76,7 @@ public class ConstructionManager : Singleton<ConstructionManager>
         ghostPreview.GetComponentInChildren<Renderer>().material.color = color;
 
         ghostPreview.SetActive(false);
+
+        GameEvent<float>.Call(Event.MoneyPreviewReceived, 0);
     }
 }

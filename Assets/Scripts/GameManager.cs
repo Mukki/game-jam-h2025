@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
@@ -64,9 +65,9 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("Jay, put the shader here!");
     }
 
-    public void ChangeMoney(float amount)
+    public void PayMoney(float amount)
     {
-        money += amount;
+        money -= amount;
         GameEvent.Call(Event.MoneyChanged);
     }
 }

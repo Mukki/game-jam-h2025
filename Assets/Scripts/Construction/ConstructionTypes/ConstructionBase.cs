@@ -27,7 +27,7 @@ public abstract class ConstructionBase : ScriptableObject
             ConstructionManager.Instance.ResetGhost();
             OnConstruct();
 
-            GameManager.Instance.money -= price;
+            GameManager.Instance.PayMoney(price);
         }
     }
 }

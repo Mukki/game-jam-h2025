@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -67,11 +68,12 @@ public class LevelMenuInterface : MonoBehaviour
 
     public void OnMoneyChanged()
     {
-        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.money;
+        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.money.ToString("0.00");
     }
 
     public void OnMoneyPreviewReceived(float amount)
     {
-        GetComponent<MoneyMenu>().moneyPreview.text = "(-" + amount.ToString() + ")";
+        GetComponent<MoneyMenu>().moneyPreview.gameObject.SetActive(amount > 0);
+        GetComponent<MoneyMenu>().moneyPreview.text = "(-" + amount.ToString("0.00") + ")";
     }
 }
