@@ -12,7 +12,7 @@ public enum Event
     DisableActionButtons,
     GameEnd,
     MoneyChanged,
-    MoneyPreviewReceived
+    MoneyPreviewReceived,
     SpawnAnimal,
 }
 
