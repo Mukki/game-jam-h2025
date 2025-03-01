@@ -6,7 +6,7 @@ public class LevelMenuInterface : MonoBehaviour
     public GameObject buttonPrefab;
     public GameObject buttonParent;
 
-    private void OnEnable()
+    private void Start()
     {
         int currentIndex = 0;
         foreach (ConstructionBase construction in ConstructionManager.Instance.availableConstructions)
@@ -22,6 +22,6 @@ public class LevelMenuInterface : MonoBehaviour
 
     private void SelectPower(GameObject button)
     {
-        ConstructionManager.Instance.currentConstruction = button.GetComponent<LevelMenuButton>().index;
+        ConstructionManager.Instance.ChangeSelectedConstruction(button.GetComponent<LevelMenuButton>().index);
     }
 }
