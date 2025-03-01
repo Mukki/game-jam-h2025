@@ -22,10 +22,9 @@ public class Counter
             CurrentTick++;
     }
 
-    public void Reset()
-    {
-        CurrentTick = 0;
-    }
+    public void Reset() => CurrentTick = 0;
+    public bool IsDone() => CurrentTick >= MaxTick;
+    public void CheatCurrentTick(int value) => CurrentTick = value;
 
     public void ResetWithRandomness(int minCounterTick, int maxCounterTick)
     {
@@ -33,10 +32,4 @@ public class Counter
         CurrentTick = 0;
     }
 
-    public bool IsDone() => CurrentTick >= MaxTick;
-
-    public void CheatCurrentTick(int value)
-    {
-        CurrentTick = value;
-    }
 }
