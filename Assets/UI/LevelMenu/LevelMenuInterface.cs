@@ -8,7 +8,7 @@ public class LevelMenuInterface : MonoBehaviour
     public GameObject buttonParent;
 
     public Sprite moneySprite;
-    private List<GameObject> actionButtonList;
+    private List<GameObject> actionButtonList = new List<GameObject>();
 
     private void OnEnable()
     {
