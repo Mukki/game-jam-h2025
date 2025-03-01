@@ -9,7 +9,7 @@ public class ExecuteAnimalSearchFuckBuddyAction : FSMAction
         var asm = (AnimalStateMachine)stateMachine;
         asm.IncrementSearchFuckCounter();
 
-        if (asm.FuckTarget != null)
+        if (asm.FuckTarget == null)
         {
             Vector3 currentPosition = asm.transform.position;
             Vector3 forward = asm.transform.forward;

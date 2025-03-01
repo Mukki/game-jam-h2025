@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
@@ -12,6 +13,7 @@ public class TestAiAnimal : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.A))
         {
             Vector3 currentPosition = transform.position;
@@ -21,6 +23,7 @@ public class TestAiAnimal : MonoBehaviour
 
             Debug.Log(test.Where(x => x.gameObject != gameObject).Count());
         }
+        */
 
 
         /*
@@ -36,6 +39,8 @@ public class TestAiAnimal : MonoBehaviour
         Vector3 currentPosition = transform.position;
         Vector3 forward = transform.forward;
 
-        Gizmos.DrawWireSphere(currentPosition + forward * ForwardRange, Radius);
+        //Gizmos.DrawWireSphere(currentPosition + forward * ForwardRange, Radius);
+
+        Gizmos.DrawWireSphere(currentPosition, 4);
     }
 }
