@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "FSM/Actions/Animal/Fuck/Reach/Exit")]
 public class ExitAnimalReachFuckBuddyAction : FSMAction
 {
     public override void Execute(BaseStateMachine stateMachine)
@@ -9,7 +10,10 @@ public class ExitAnimalReachFuckBuddyAction : FSMAction
 
         if (asm.WillSpawnBaby)
         {
-            // Trigger spawn baby game event
+            GameEvent<AnimalTypes, Vector3>.Call(Event.SpawnAnimal, asm.AnimalType, asm.transform.position);
         }
+
+        asm.FuckTarget = null;
+        asm.WillSpawnBaby = false;
     }
 }

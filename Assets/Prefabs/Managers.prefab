@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4139426038685578908}
   - component: {fileID: 7960728655360106100}
   - component: {fileID: 6815954247098658578}
+  - component: {fileID: -2543112488069965812}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 398435cce48b1594a9ceb01777d35d26, type: 2}
   - {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}
   constructionMarkerPrefab: {fileID: 6972567967525642371, guid: cb226bae1d09d6440a1b1795358b7f82, type: 3}
+  ghostPreview: {fileID: 0}
 --- !u!114 &6815954247098658578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,3 +72,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+--- !u!114 &-2543112488069965812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804296191008146639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853eea37d52c82f47afecbb63163e9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefabs:
+  - Type: 0
+    Prefab: {fileID: 6958564087417471777, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
+  - Type: 1
+    Prefab: {fileID: 4847719009558928035, guid: a2ba1084a108f3f4c81c10434f59df75, type: 3}
+  - Type: 2
+    Prefab: {fileID: 8390339972247351620, guid: 174105b71dc28744fabaf0c5ff5c1d8e, type: 3}

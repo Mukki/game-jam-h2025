@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "ConstructionFence", menuName = "Scriptable Objects/Constructions/Fence")]
 public class ConstructionFence : ConstructionBase
@@ -34,6 +33,9 @@ public class ConstructionFence : ConstructionBase
         else
         {
             UpdateGameObject(ConstructionManager.Instance.ghostPreview, position);
+
+            float length = Vector3.Distance(firstPos, position);
+            GameEvent<float>.Call(Event.MoneyPreviewReceived, pricePerUnit * length);
         }
     }
 
