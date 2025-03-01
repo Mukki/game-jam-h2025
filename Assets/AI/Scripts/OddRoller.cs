@@ -10,15 +10,9 @@ public class OddRoller
         _currentOdds = maxExcludedOdds;
     }
 
-    public void ResetOdds()
-    {
-        _currentOdds = _maxOdds;
-    }
-
-    public void IncreaseOdds()
-    {
-        _currentOdds--;
-    }
+    public void ResetOdds() => _currentOdds = _maxOdds;
+    public void IncreaseOdds() => _currentOdds--;
+    public void ResetCooldown() => _isInCooldown = false;
 
     public int Roll(bool increaseOdds = false)
     {
@@ -37,10 +31,5 @@ public class OddRoller
 
         _isInCooldown = true;
         return Roll(increaseOdds);
-    }
-
-    public void ResetCooldown()
-    {
-        _isInCooldown = false;
     }
 }

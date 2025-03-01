@@ -13,30 +13,29 @@ public enum LevelState
 
 public class BaseStateMachine : MonoBehaviour
 {
-    [SerializeField] protected BaseState _initialState;
+    [SerializeField] protected BaseState _InitialState;
+    //[SerializeField] private LevelState _levelState = LevelState.LevelLoading;
+    
     public BaseState CurrentState;
 
-    protected Dictionary<Type, Component> _cachedComponents;
-
-    [SerializeField]
-    private LevelState _levelState = LevelState.LevelLoading;
+    protected Dictionary<Type, Component> _CachedComponents;
 
     protected virtual void OnEnable()
     {
-        GameEvent.Register(Event.LevelStart, OnLevelStart);
-        GameEvent.Register(Event.LevelEnd, OnLevelEnd);
+        //GameEvent.Register(Event.LevelStart, OnLevelStart);
+        //GameEvent.Register(Event.LevelEnd, OnLevelEnd);
     }
 
     protected virtual void OnDisable()
     {
-        GameEvent.Unregister(Event.LevelStart, OnLevelStart);
-        GameEvent.Unregister(Event.LevelEnd, OnLevelEnd);
+        //GameEvent.Unregister(Event.LevelStart, OnLevelStart);
+        //GameEvent.Unregister(Event.LevelEnd, OnLevelEnd);
     }
 
     protected virtual void Awake()
     {
-        CurrentState = _initialState;
-        _cachedComponents = new Dictionary<Type, Component>();
+        CurrentState = _InitialState;
+        _CachedComponents = new Dictionary<Type, Component>();
 
         var agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -50,16 +49,17 @@ public class BaseStateMachine : MonoBehaviour
 
     public new T GetComponent<T>() where T : Component
     {
-        if (_cachedComponents.ContainsKey(typeof(T)))
-            return _cachedComponents[typeof(T)] as T;
+        if (_CachedComponents.ContainsKey(typeof(T)))
+            return _CachedComponents[typeof(T)] as T;
 
         if (base.TryGetComponent<T>(out var component))
         {
-            _cachedComponents.Add(typeof(T), component);
+            _CachedComponents.Add(typeof(T), component);
         }
         return component;
     }
 
+    /*
     protected virtual void OnLevelStart()
     {
         SetLevelState(LevelState.LevelStarted);
@@ -79,5 +79,6 @@ public class BaseStateMachine : MonoBehaviour
     {
         return _levelState;
     }
+    */
 }
 
