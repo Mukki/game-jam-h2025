@@ -9,7 +9,5 @@ public class AnimalIdleEnterAction : FSMAction
         var asm = (AnimalStateMachine)stateMachine;
         asm.RandomAnimalState = AnimalState.None;
         asm.ResetCounter();
-
-        Debug.Log("Entered Idle");
     }
 }
