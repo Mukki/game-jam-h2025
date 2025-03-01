@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pricePerUnit: 4
   prefab: {fileID: 9026458517640432127, guid: 516f2f8885e9e624cbbecb14f32a8f64, type: 3}
+  ghostPrefab: {fileID: 9026458517640432127, guid: aee9d489113d1b942acc6c79e45a0356, type: 3}
   Image: {fileID: 0}
   Name: Small Fence

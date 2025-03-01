@@ -4,6 +4,7 @@ public abstract class ConstructionBase : ScriptableObject
 {
     public float pricePerUnit;
     public GameObject prefab;
+    public GameObject ghostPrefab;
     public Sprite Image;
     public string Name;
 
