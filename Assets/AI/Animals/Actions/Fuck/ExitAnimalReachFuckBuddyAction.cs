@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 [CreateAssetMenu(menuName = "FSM/Actions/Animal/Fuck/Reach/Exit")]
 public class ExitAnimalReachFuckBuddyAction : FSMAction
@@ -15,5 +16,9 @@ public class ExitAnimalReachFuckBuddyAction : FSMAction
 
         asm.FuckTarget = null;
         asm.WillSpawnBaby = false;
+        asm.ForceToFuck = false;
+
+        NavMeshAgent navAgent = asm.GetComponent<NavMeshAgent>();
+        navAgent.isStopped = true;
     }
 }
