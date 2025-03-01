@@ -11,6 +11,8 @@ public class ConstructionManager : Singleton<ConstructionManager>
 
     private GameObject constructionMarker;
 
+    public GameObject ghostPreview;
+
     public override void Awake()
     {
         base.Awake();
@@ -29,6 +31,7 @@ public class ConstructionManager : Singleton<ConstructionManager>
         if (Input.GetMouseButtonDown(1))
         {
             availableConstructions[currentConstruction].ProcessCancel();
+            ResetGhost();
         }
 
         LayerMask layerMask = LayerMask.GetMask("Terrain");
@@ -37,8 +40,8 @@ public class ConstructionManager : Singleton<ConstructionManager>
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            constructionMarker.SetActive(true);
-            constructionMarker.transform.position = hit.point;
+            ghostPreview.SetActive(true);
+            availableConstructions[currentConstruction].ProcessMove(hit.point);
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -47,7 +50,33 @@ public class ConstructionManager : Singleton<ConstructionManager>
         }
         else
         {
-            constructionMarker.SetActive(false);
+            ghostPreview.SetActive(false);
         }
+    }
+
+    public void ChangeSelectedConstruction(int index)
+    {
+        if (currentConstruction != -1)
+        {
+            availableConstructions[currentConstruction].ProcessCancel();
+        }
+
+        currentConstruction = index;
+
+        ResetGhost();
+    }
+
+    public void ResetGhost()
+    {
+        Destroy(ghostPreview);
+        ghostPreview = Instantiate(availableConstructions[currentConstruction].prefab);
+
+        ghostPreview.GetComponentInChildren<Collider>().enabled = false;
+
+        Color color = ghostPreview.GetComponentInChildren<Renderer>().material.color;
+        color.a = 0.1f;
+        ghostPreview.GetComponentInChildren<Renderer>().material.color = color;
+
+        ghostPreview.SetActive(false);
     }
 }
