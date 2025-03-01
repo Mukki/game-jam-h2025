@@ -4,9 +4,9 @@ public class GameManager : Singleton<GameManager>
 {
     public float money;
 
-    public override void Awake()
+    protected override void OnAwake()
     {
-        base.Awake();
+        base.OnAwake();
 
         money = 100.0f;
     }
