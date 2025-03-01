@@ -6,6 +6,8 @@ public class LevelMenuInterface : MonoBehaviour
     public GameObject buttonPrefab;
     public GameObject buttonParent;
 
+    public Sprite moneySprite;
+
     private void Start()
     {
         int currentIndex = 0;
@@ -18,6 +20,9 @@ public class LevelMenuInterface : MonoBehaviour
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectPower(newButton));
             currentIndex++;
         }
+
+        GetComponent<MoneyMenu>().displayedImage.sprite = moneySprite;
+        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.money;
     }
 
     private void SelectPower(GameObject button)
