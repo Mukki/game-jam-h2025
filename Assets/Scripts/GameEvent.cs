@@ -8,6 +8,9 @@ public enum Event
     DayEnd,
     NightStart,
     NightEnd,
+    EnableActionButtons,
+    DisableActionButtons,
+    GameEnd,
 }
 
 // This implementation does not support params, to add params, see the exemple below

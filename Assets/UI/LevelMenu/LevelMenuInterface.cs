@@ -8,12 +8,21 @@ public class LevelMenuInterface : MonoBehaviour
 
     public Sprite moneySprite;
 
+    private List<GameObject> actionButtonList;
+
+    private void OnEnable()
+    {
+        GameEvent.Register(Event.EnableActionButtons, ShowButtons);
+        GameEvent.Register(Event.DisableActionButtons, HideButtons);
+    }
+
     private void Start()
     {
         int currentIndex = 0;
         foreach (ConstructionBase construction in ConstructionManager.Instance.availableConstructions)
         {
             GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
+            actionButtonList.Add(newButton);
             newButton.GetComponent<LevelMenuButton>().index = currentIndex;
             newButton.GetComponent<LevelMenuButton>().textButton.text = construction.Name;
             newButton.GetComponent<LevelMenuButton>().displayedImage.sprite = construction.Image; 
@@ -28,5 +37,21 @@ public class LevelMenuInterface : MonoBehaviour
     private void SelectPower(GameObject button)
     {
         ConstructionManager.Instance.ChangeSelectedConstruction(button.GetComponent<LevelMenuButton>().index);
+    }
+
+    private void HideButtons()
+    {
+        foreach (GameObject button in actionButtonList)
+        {
+            button.SetActive(false);
+        }
+    }
+
+    private void ShowButtons()
+    {
+        foreach (GameObject button in actionButtonList)
+        {
+            button.SetActive(true);
+        }
     }
 }
