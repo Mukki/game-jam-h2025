@@ -6,6 +6,7 @@ public enum Event
     GameStarted,
     LevelStart,
     LevelEnd,
+    SpawnAnimal,
 }
 
 // This implementation does not support params, to add params, see the exemple below
