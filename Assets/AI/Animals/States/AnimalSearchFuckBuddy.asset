@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db901795e6c561f4aaa08f3563a7b505, type: 3}
-  m_Name: AnimalWanderState
+  m_Name: AnimalSearchFuckBuddy
   m_EditorClassIdentifier: 
   StateName: 
   EnterActions:
-  - {fileID: 11400000, guid: adec8346ed37e064484126f23d12e032, type: 2}
-  Actions: []
-  ExitActions:
-  - {fileID: 11400000, guid: 4a45227dde8408845ad6f3c1be92022c, type: 2}
+  - {fileID: 11400000, guid: af7ca46b830caa34fb553d6214095c51, type: 2}
+  Actions:
+  - {fileID: 11400000, guid: 6258655c4e5f7794b8ba21e59459325e, type: 2}
+  ExitActions: []
   Transitions:
-  - {fileID: 11400000, guid: e208560d9e781af44b38fc1a721e70c4, type: 2}
+  - {fileID: 11400000, guid: da792a2c58793a94d8544909796745b3, type: 2}

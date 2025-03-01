@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum AnimalTypes
@@ -12,9 +13,25 @@ public class AnimalStats : ScriptableObject
 {
     public AnimalTypes AnimalType;
 
-    public float FieldOfViewRange = 2f;
-    public float FieldOfViewOffset = 3f;
     public float RandomWanderRange = 1.5f;
+
+    public FieldOfView ViewRange = new()
+    {
+        Range = 3,
+        Offset = 2
+    };
+
+    public FieldOfView HormoneRange = new()
+    {
+        Range = 4,
+        Offset = 1,
+    };
+
+    public BoundedValues HornyTimeRange = new()
+    {
+        Min = 200,
+        Max = 250,
+    };
 
     public BoundedValues IdleTimeRange = new()
     {
