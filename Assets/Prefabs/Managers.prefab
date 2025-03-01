@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4139426038685578908}
   - component: {fileID: 7960728655360106100}
+  - component: {fileID: 6815954247098658578}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -56,3 +57,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 398435cce48b1594a9ceb01777d35d26, type: 2}
   - {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}
   constructionMarkerPrefab: {fileID: 6972567967525642371, guid: cb226bae1d09d6440a1b1795358b7f82, type: 3}
+--- !u!114 &6815954247098658578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804296191008146639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0d9dc499e8cd6845a90606b4ec46139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 0
