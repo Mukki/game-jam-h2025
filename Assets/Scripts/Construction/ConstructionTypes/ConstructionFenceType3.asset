@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27fc873e3629ae74f9d04b9eb46f9406, type: 3}
   m_Name: ConstructionFenceType3
   m_EditorClassIdentifier: 
+  pricePerUnit: 6
   prefab: {fileID: 9026458517640432127, guid: ebb9896c0a8947943b3e8b38fceda1b0, type: 3}
+  Image: {fileID: 0}
+  Name: Grid Fence

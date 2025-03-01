@@ -5,6 +5,14 @@ public class ConstructionLamp : ConstructionBase
 {
     public override void ProcessClick(Vector3 position)
     {
-        Instantiate(prefab, position, Quaternion.identity);
+        if (CanConstruct(pricePerUnit))
+        {
+            Instantiate(prefab, position, Quaternion.identity);
+        }
+    }
+
+    public override void ProcessCancel()
+    {
+
     }
 }

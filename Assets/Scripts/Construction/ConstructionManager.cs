@@ -7,6 +7,18 @@ public class ConstructionManager : Singleton<ConstructionManager>
     public List<ConstructionBase> allConstructions = new List<ConstructionBase>();
     public List<ConstructionBase> availableConstructions = new List<ConstructionBase>();
 
+    public GameObject constructionMarkerPrefab;
+
+    private GameObject constructionMarker;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        constructionMarker = Instantiate(constructionMarkerPrefab);
+        constructionMarker.SetActive(false);
+    }
+
     private void Update()
     {
         if (currentConstruction == -1)
@@ -14,16 +26,28 @@ public class ConstructionManager : Singleton<ConstructionManager>
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
-            LayerMask layerMask = LayerMask.GetMask("Terrain");
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            availableConstructions[currentConstruction].ProcessCancel();
+        }
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        LayerMask layerMask = LayerMask.GetMask("Terrain");
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+        {
+            constructionMarker.SetActive(true);
+            constructionMarker.transform.position = hit.point;
+
+            if (Input.GetMouseButtonDown(0))
             {
                 availableConstructions[currentConstruction].ProcessClick(hit.point);
             }
+        }
+        else
+        {
+            constructionMarker.SetActive(false);
         }
     }
 }
