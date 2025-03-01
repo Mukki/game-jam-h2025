@@ -252,6 +252,7 @@ GameObject:
   - component: {fileID: 1140021881}
   - component: {fileID: 1140021880}
   - component: {fileID: 1140021879}
+  - component: {fileID: 1140021883}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Terrain
@@ -349,6 +350,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1140021883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140021878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 63d8c9de54d6782419ee2aa533298bd9, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1492562314
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,13 +550,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentConstruction: -1
   allConstructions:
-  - {fileID: 11400000, guid: 120091f1c4d08d94d90a588adcf2c850, type: 2}
   - {fileID: 11400000, guid: 2d7fc77cb65d2394fb396627f0675d39, type: 2}
   - {fileID: 11400000, guid: 14efcc3b6f278a74699c6008184fbc38, type: 2}
   - {fileID: 11400000, guid: 398435cce48b1594a9ceb01777d35d26, type: 2}
   - {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}
   availableConstructions:
-  - {fileID: 11400000, guid: 120091f1c4d08d94d90a588adcf2c850, type: 2}
   - {fileID: 11400000, guid: 2d7fc77cb65d2394fb396627f0675d39, type: 2}
   - {fileID: 11400000, guid: 14efcc3b6f278a74699c6008184fbc38, type: 2}
   - {fileID: 11400000, guid: 398435cce48b1594a9ceb01777d35d26, type: 2}

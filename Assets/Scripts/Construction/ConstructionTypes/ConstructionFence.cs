@@ -14,17 +14,27 @@ public class ConstructionFence : ConstructionBase
         }
         else
         {
-            GameObject newFence = Instantiate(prefab, firstPos, Quaternion.identity);
+            float length = Vector3.Distance(firstPos, position);
 
-            Vector3 newScale = newFence.transform.localScale;
-            newScale.x = Vector3.Distance(firstPos, position);
-            newFence.transform.localScale = newScale;
+            if (CanConstruct(pricePerUnit * length))
+            {
+                GameObject newFence = Instantiate(prefab, firstPos, Quaternion.identity);
 
-            Vector3 newRotation = newFence.transform.eulerAngles;
-            newRotation.y = Vector3.SignedAngle(Vector3.right, position - firstPos, Vector3.up);
-            newFence.transform.eulerAngles = newRotation;
+                Vector3 newScale = newFence.transform.localScale;
+                newScale.x = length;
+                newFence.transform.localScale = newScale;
+
+                Vector3 newRotation = newFence.transform.eulerAngles;
+                newRotation.y = Vector3.SignedAngle(Vector3.right, position - firstPos, Vector3.up);
+                newFence.transform.eulerAngles = newRotation;
+            }
         }
 
         firstPosSet = !firstPosSet;
+    }
+
+    public override void ProcessCancel()
+    {
+        firstPosSet = false;
     }
 }

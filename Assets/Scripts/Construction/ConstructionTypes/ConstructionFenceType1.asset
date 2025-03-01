@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: ConstructionFenceType1
   m_EditorClassIdentifier: 
   prefab: {fileID: 9026458517640432127, guid: 370a634af046f3844a0bceaf9959308a, type: 3}
+  pricePerUnit: 2
