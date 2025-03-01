@@ -15,6 +15,7 @@ public class ConstructionLamp : ConstructionBase
     public override void ProcessMove(Vector3 position)
     {
         ConstructionManager.Instance.ghostPreview.transform.position = position;
+        GameEvent<float>.Call(Event.MoneyPreviewReceived, pricePerUnit);
     }
 
     public override void ProcessCancel()

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,22 @@ public class LevelMenuInterface : MonoBehaviour
     public GameObject buttonParent;
 
     public Sprite moneySprite;
-
     private List<GameObject> actionButtonList;
 
     private void OnEnable()
     {
         GameEvent.Register(Event.EnableActionButtons, ShowButtons);
         GameEvent.Register(Event.DisableActionButtons, HideButtons);
+        GameEvent.Register(Event.MoneyChanged, OnMoneyChanged);
+        GameEvent <float>.Register(Event.MoneyPreviewReceived, OnMoneyPreviewReceived);
+    }
+
+    private void OnDisable()
+    {
+        GameEvent.Unregister(Event.EnableActionButtons, ShowButtons);
+        GameEvent.Unregister(Event.DisableActionButtons, HideButtons);
+        GameEvent.Unregister(Event.MoneyChanged, OnMoneyChanged);
+        GameEvent<float>.Unregister(Event.MoneyPreviewReceived, OnMoneyPreviewReceived);
     }
 
     private void Start()
@@ -31,7 +41,7 @@ public class LevelMenuInterface : MonoBehaviour
         }
 
         GetComponent<MoneyMenu>().displayedImage.sprite = moneySprite;
-        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.money;
+        OnMoneyChanged();
     }
 
     private void SelectPower(GameObject button)
@@ -53,5 +63,15 @@ public class LevelMenuInterface : MonoBehaviour
         {
             button.SetActive(true);
         }
+    }
+
+    public void OnMoneyChanged()
+    {
+        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.money;
+    }
+
+    public void OnMoneyPreviewReceived(float amount)
+    {
+        GetComponent<MoneyMenu>().moneyPreview.text = "(-" + amount.ToString() + ")";
     }
 }
