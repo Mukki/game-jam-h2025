@@ -82,6 +82,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("StartOfNight");
         SoundManager.Instance.MySource.clip = SoundManager.Instance.NightAudio;
+        SoundManager.Instance.MySource.loop = true;
         SoundManager.Instance.MySource.Play();
         DimableLight lightController = FindObjectOfType<DimableLight>();
         lightController.SetTargetIntensity(0.0f);

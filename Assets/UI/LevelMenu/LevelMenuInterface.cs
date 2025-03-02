@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +8,37 @@ public class LevelMenuInterface : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public GameObject buttonParent;
+    public GameObject ProductInfoElementPrefab;
+    public GameObject ContinueButtonPrefab;
+
+    public float ClockSpeed;
+    public bool DayClockIsActive = false;
+    public bool NightClockIsActive = false;
+
+    public RectTransform Clock;
+
+    public Counter DayTimer;
+    public Counter NightTimer;
 
     public Sprite moneySprite;
-    private List<GameObject> actionButtonList = new List<GameObject>();
+    private List<GameObject> actionButtonList = new();
+    private List<GameObject> _productInfos = new();
 
     public UnlockInterface unlockInterface;
     public SummaryInterface summaryInterface;
 
+    private void Awake()
+    {
+        DayTimer = new Counter((int)GameManager.Instance.LenghtOfDay * 50);
+        NightTimer = new Counter((int)GameManager.Instance.LenghtOfNight * 50);
+    }
+
     private void OnEnable()
     {
         GameEvent.Register(Event.DayStart, OnDayStart);
+        GameEvent.Register(Event.DayEnd, OnDayEnd);
         GameEvent.Register(Event.NightStart, OnNightStart);
+        GameEvent.Register(Event.NightEnd, OnNightEnd);
         GameEvent.Register(Event.MoneyChanged, OnMoneyChanged);
         GameEvent<bool>.Register(Event.DisplayDaySummary, DisplayDaySummary);
         GameEvent<DayEventBase>.Register(Event.DisplayDayEvent, DisplayDayUnlock);
@@ -27,7 +48,9 @@ public class LevelMenuInterface : MonoBehaviour
     private void OnDisable()
     {
         GameEvent.Unregister(Event.DayStart, OnDayStart);
+        GameEvent.Unregister(Event.DayEnd, OnDayEnd);
         GameEvent.Unregister(Event.NightStart, OnNightStart);
+        GameEvent.Unregister(Event.NightEnd, OnNightEnd);
         GameEvent.Unregister(Event.MoneyChanged, OnMoneyChanged);
         GameEvent<bool>.Unregister(Event.DisplayDaySummary, DisplayDaySummary);
         GameEvent<DayEventBase>.Unregister(Event.DisplayDayEvent, DisplayDayUnlock);
@@ -54,10 +77,23 @@ public class LevelMenuInterface : MonoBehaviour
 
         actionButtonList.Clear();
         unlockInterface.gameObject.SetActive(false);
+        
+        DayClockIsActive = true;
+    }
+
+    private void OnDayEnd()
+    {
+        DayClockIsActive = false;
+        NightTimer.Reset();
     }
 
     private void DisplayDaySummary(bool active)
     {
+        if (active)
+            CreateInfos();
+        else
+            DestroyInfos();
+
         summaryInterface.gameObject.SetActive(active);
     }
 
@@ -88,6 +124,14 @@ public class LevelMenuInterface : MonoBehaviour
             newButton.GetComponent<Button>().onClick.AddListener(() => SelectPower(newButton));
             currentIndex++;
         }
+
+        NightClockIsActive = true;
+    }
+
+    private void OnNightEnd()
+    {
+        NightClockIsActive = false;
+        DayTimer.Reset();
     }
 
     public void OnMoneyChanged()
@@ -99,5 +143,65 @@ public class LevelMenuInterface : MonoBehaviour
     {
         GetComponent<MoneyMenu>().moneyPreview.gameObject.SetActive(amount > 0);
         GetComponent<MoneyMenu>().moneyPreview.text = "(-" + amount.ToString("0.00") + ")";
+    }
+
+    public void CreateInfos()
+    {
+        foreach (var animalType in AnimalManager.Instance.GetAnimalTypesForTest())
+        {
+            GameObject alive = Instantiate(ProductInfoElementPrefab,
+                summaryInterface.parentContainer.transform);
+            var alivePanel = alive.GetComponent<SummaryPanel>();
+            //alivePanel.Image = "SOMETHING";
+            alivePanel.Name.text = $"{animalType.ProductName}(s) sold for:";
+            alivePanel.Quantity.text = AnimalManager.Instance.TotalValue(animalType.AnimalType).ToString();
+            _productInfos.Add(alive);
+
+            GameObject dead = Instantiate(ProductInfoElementPrefab,
+                summaryInterface.parentContainer.transform);
+            var deadPanel = dead.GetComponent<SummaryPanel>();
+            //dead.Image = "SOMETHING";
+            deadPanel.Name.text = $"{Enum.GetName(typeof(AnimalTypes), animalType.AnimalType)} dead:";
+            deadPanel.Quantity.text = AnimalManager.Instance.GetAnimalCount(animalType.AnimalType).ToString();
+            _productInfos.Add(dead);
+        }
+
+        GameObject totalValue = Instantiate(ProductInfoElementPrefab,
+            summaryInterface.parentContainer.transform);
+        var totalValuePanel = totalValue.GetComponent<SummaryPanel>();
+        //dead.Image = "SOMETHING";
+        totalValuePanel.Name.text = $"Total: ";
+        totalValuePanel.Quantity.text = AnimalManager.Instance.TotalValue().ToString();
+        _productInfos.Add(totalValue);
+
+        GameObject button = Instantiate(ContinueButtonPrefab,
+            summaryInterface.parentContainer.transform);
+        _productInfos.Add(button);
+    }
+
+    public void DestroyInfos()
+    {
+        foreach (var info in _productInfos)
+        {
+            _productInfos.Remove(info);
+            Destroy(info);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (DayClockIsActive)
+        {
+            DayTimer.Increment();
+            int current = DayTimer.GetCurrentTick();
+            Clock.rotation = Quaternion.Euler(0, 0, current/50 * 180/GameManager.Instance.LenghtOfDay);
+        }
+
+        if (NightClockIsActive)
+        {
+            NightTimer.Increment();
+            int current = NightTimer.GetCurrentTick();
+            Clock.rotation = Quaternion.Euler(0, 0, (current/50 * 180/GameManager.Instance.LenghtOfNight) + 180);
+        }
     }
 }

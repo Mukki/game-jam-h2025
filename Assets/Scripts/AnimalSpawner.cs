@@ -38,6 +38,8 @@ public class AnimalSpawner : Singleton<AnimalSpawner>
                 AnimalManager.Instance.SpawnAnimalBasedOnTerrain(availableAnimals[Random.Range(0, availableAnimals.Count)], terrain);
             }
         }
+
+        spawnableTerrains.Clear();
     }
 
     public void AddSpawnableTerrains(int count)
