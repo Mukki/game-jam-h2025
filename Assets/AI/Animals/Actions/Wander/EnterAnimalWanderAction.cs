@@ -18,9 +18,11 @@ public class EnterAnimalWanderAction : FSMAction
         do
         {
             float x = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.x;
+            float y = asm.transform.position.y;
             float z = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.z;
-            targetPosition = new(x, 0, z);
+            targetPosition = new(x, y, z);
             navAgent.SetDestination(targetPosition);
+            asm.transform.LookAt(targetPosition);
         } while (!navAgent.CalculatePath(targetPosition, navMeshPath) || navMeshPath.status != NavMeshPathStatus.PathComplete);
 
         navAgent.isStopped = false;

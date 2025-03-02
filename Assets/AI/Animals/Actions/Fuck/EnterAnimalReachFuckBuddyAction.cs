@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,12 +15,13 @@ public class EnterAnimalReachFuckBuddyAction : FSMAction
         Vector3 meetingPoint = new()
         {
             x = (currentPosition.x + fuckTargetPosition.x) / 2,
-            y = 0,
+            y = asm.transform.position.y,
             z = (currentPosition.z + fuckTargetPosition.z) / 2
         };
 
         var navAgent = asm.GetComponent<NavMeshAgent>();
         navAgent.SetDestination(meetingPoint);
         navAgent.isStopped = false;
+        asm.transform.LookAt(meetingPoint);
     }
 }
