@@ -12,7 +12,6 @@ public class LevelMenuInterface : MonoBehaviour
     public GameObject ContinueButtonPrefab;
     public Sprite Money;
 
-
     public float ClockSpeed;
     public bool DayClockIsActive = false;
     public bool NightClockIsActive = false;
@@ -91,12 +90,12 @@ public class LevelMenuInterface : MonoBehaviour
 
     private void DisplayDaySummary(bool active)
     {
+        summaryInterface.gameObject.SetActive(active);
+
         if (active)
             CreateInfos();
         else
             DestroyInfos();
-
-        summaryInterface.gameObject.SetActive(active);
     }
 
     private void DisplayDayUnlock(DayEventBase dayEvent)
@@ -175,7 +174,7 @@ public class LevelMenuInterface : MonoBehaviour
         totalValuePanel.Name.text = $"Total: ";
         totalValuePanel.Quantity.text = AnimalManager.Instance.TotalValue().ToString();
 
-        if(Money != null)
+        if (Money != null)
         {
             totalValuePanel.Image.sprite = Money;
         }
@@ -189,10 +188,14 @@ public class LevelMenuInterface : MonoBehaviour
 
     public void DestroyInfos()
     {
-        foreach (var info in _productInfos)
+        if (_productInfos != null)
         {
-            _productInfos.Remove(info);
-            Destroy(info);
+            foreach (var info in _productInfos)
+            {
+                Destroy(info);
+            }
+
+            var test = "test";
         }
     }
 

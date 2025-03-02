@@ -59,9 +59,9 @@ public class GameManager : Singleton<GameManager>
         SoundManager.Instance.MySource.clip = SoundManager.Instance.DayAudio;
         SoundManager.Instance.MySource.loop = true;
         SoundManager.Instance.MySource.Play();
-        DimableLight lightController = FindObjectOfType<DimableLight>();
+        DimableLight lightController = FindFirstObjectByType<DimableLight>();
         lightController.SetTargetIntensity(0.5f);
-        ShadowBorderDim borderScript = FindObjectOfType<ShadowBorderDim>();
+        ShadowBorderDim borderScript = FindFirstObjectByType<ShadowBorderDim>();
         borderScript.SetBorderValue(0.0f, 0.0f);
         GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, null);
         _coroutine = DayCycleCountDown(LenghtOfDay);
@@ -84,9 +84,9 @@ public class GameManager : Singleton<GameManager>
         SoundManager.Instance.MySource.clip = SoundManager.Instance.NightAudio;
         SoundManager.Instance.MySource.loop = true;
         SoundManager.Instance.MySource.Play();
-        DimableLight lightController = FindObjectOfType<DimableLight>();
+        DimableLight lightController = FindFirstObjectByType<DimableLight>();
         lightController.SetTargetIntensity(0.0f);
-        ShadowBorderDim borderScript = FindObjectOfType<ShadowBorderDim>();
+        ShadowBorderDim borderScript = FindFirstObjectByType<ShadowBorderDim>();
         borderScript.SetBorderValue(0.03f, 0.03f);
         _coroutine = NightCycleCountDown(LenghtOfNight);
         StartCoroutine(_coroutine);
@@ -113,7 +113,7 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
-        ShadowBorderDim borderScript = FindObjectOfType<ShadowBorderDim>();
+        ShadowBorderDim borderScript = FindFirstObjectByType<ShadowBorderDim>();
         borderScript.SetBorderValue(0.5f, 0.05f);
         SoundManager.Instance.MySource.clip = SoundManager.Instance.Death;
         SoundManager.Instance.MySource.loop = false;

@@ -790,6 +790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentContainer: {fileID: 4439077793063727334}
   summaryObj: {fileID: 6146401450055215299, guid: 1d5988e61573b3d4380dd94b84ea927a, type: 3}
+  MoneySprite: {fileID: 0}
 --- !u!1 &6022332997570701350
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1203,7 @@ MonoBehaviour:
   buttonParent: {fileID: 6094140557157282435}
   ProductInfoElementPrefab: {fileID: 6146401450055215299, guid: 1d5988e61573b3d4380dd94b84ea927a, type: 3}
   ContinueButtonPrefab: {fileID: 7874497325857740970, guid: cd8f8f16f41d7c241b5fc795bb5dc6aa, type: 3}
+  Money: {fileID: 21300000, guid: f351ad8e2e48c9c4b9600635e7806060, type: 3}
   ClockSpeed: 0
   DayClockIsActive: 0
   NightClockIsActive: 0
