@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class AnimalManager : Singleton<AnimalManager>
 {
@@ -20,16 +21,16 @@ public class AnimalManager : Singleton<AnimalManager>
 
     private void OnEnable()
     {
+        GameEvent.Register(Event.DayStart, OnDayStart);
         GameEvent<AnimalTypes, Vector3>.Register(Event.SpawnAnimal, OnSpawnAnimal);
         GameEvent<GameObject>.Register(Event.KillAnimal, OnKillAnimal);
-        GameEvent.Register(Event.DayStart, OnDayStart);
     }
 
     private void OnDisable()
     {
+        GameEvent.Unregister(Event.DayStart, OnDayStart);
         GameEvent<AnimalTypes, Vector3>.Unregister(Event.SpawnAnimal, OnSpawnAnimal);
         GameEvent<GameObject>.Unregister(Event.KillAnimal, OnKillAnimal);
-        GameEvent.Unregister(Event.DayStart, OnDayStart);
     }
 
     protected virtual void OnSpawnAnimal(AnimalTypes type, Vector3 spawnPosition)
@@ -45,6 +46,19 @@ public class AnimalManager : Singleton<AnimalManager>
     protected virtual void OnKillAnimal(GameObject animal)
     {
         _dayDeath++;
+
+        if (animal.TryGetComponent<AnimalStateMachine>(out var asm))
+        {
+            var toRemove = _animals.FirstOrDefault(x => x.TryGetComponent<AnimalStateMachine>(out var xasm) 
+                && xasm.ID == asm.ID);
+
+            if (toRemove != null)
+            {
+                _animals.Remove(toRemove);
+            }
+        }
+
+        Destroy(animal);
     }
 
     protected virtual void OnDayStart()
