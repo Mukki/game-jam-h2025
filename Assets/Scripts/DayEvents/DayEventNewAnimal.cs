@@ -3,10 +3,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DayEventNewAnimal", menuName = "Scriptable Objects/DayEvents/NewAnimal")]
 public class DayEventNewAnimal : DayEventBase
 {
-    public GameObject animalPrefab;
+    public AnimalTypes newAnimalType;
 
     public override void OnUnlock()
     {
-
+        AnimalSpawner.Instance.availableAnimals.Add(newAnimalType);
     }
 }

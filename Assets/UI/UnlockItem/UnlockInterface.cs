@@ -7,6 +7,7 @@ public class UnlockInterface : MonoBehaviour
 
     public void Display(DayEventBase dayEvent)
     {
+        unlockInfo.Name.text = dayEvent.title;
         unlockInfo.Description.text = dayEvent.description;
     }
 }

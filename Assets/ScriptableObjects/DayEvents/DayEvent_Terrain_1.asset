@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d1432fd2f057d4c988caf69409893f, type: 3}
   m_Name: DayEvent_Terrain_1
   m_EditorClassIdentifier: 
-  day: 0
+  notifyPlayer: 0
+  day: 2
   description: 
+  title: 
   sprite: {fileID: 0}
-  terrainID: 0
+  terrainCountToAdd: 5

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum AnimalTypes
 {
@@ -21,6 +22,8 @@ public class AnimalStats : ScriptableObject
     public int MaxBabyPerDay = 2;
     public int SellValue = 1;
     public string ProductName;
+
+    public Sprite Photo;
 
     public FieldOfView ViewRange = new()
     {

@@ -33,6 +33,8 @@ public class AnimalStateMachine : BaseStateMachine
     public int SellValue => _stats.SellValue;
     public string ProductName => _stats.ProductName;
 
+    public Sprite Photo => _stats.Photo;
+
     public GameObject FoodTarget;
 
     public bool ForceToSleep = false;
