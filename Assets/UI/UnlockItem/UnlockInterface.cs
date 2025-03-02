@@ -9,5 +9,6 @@ public class UnlockInterface : MonoBehaviour
     {
         unlockInfo.Name.text = dayEvent.title;
         unlockInfo.Description.text = dayEvent.description;
+        unlockInfo.Image.sprite = dayEvent.sprite;
     }
 }
