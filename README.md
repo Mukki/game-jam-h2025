@@ -1,6 +1,7 @@
 # 🎮 Haunted Homestead
 
 ![svgviewer-png-output](https://github.com/user-attachments/assets/910ecb27-c9be-4e35-8a80-b909ddef8ace)
+
 *Manage your growing herd while fending off shadowy hands at night.*
 
 ## 🏆 About the Game
