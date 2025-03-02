@@ -1,28 +1,24 @@
-# 🎮 Game Title
+# 🎮 Haunted Homestead
 
 **[Game Banner]**
-*A short tagline for your game (e.g., "A fast-paced puzzle platformer where time is your enemy!")*
+*Manage your growing herd while fending off shadowy hands at night.*
 
 ## 🏆 About the Game
-**Game Title** was created for Université du Québec at Chicoutimi's WonderJam, a 48h game jam hosted from February 28th, 2025 to March 2nd, 2025.  
-The theme for the jam was **"Theme Name"**, and our game interprets it by **[brief explanation of how your game fits the theme].**
+_Haunted Homestead_ was created for Université du Québec at Chicoutimi's WonderJam, a 48h game jam hosted from February 28th, 2025 to March 2nd, 2025.  
+The theme for the jam was "Frontiers", and our game interprets it by playing on the fact that you must create frontiers to protect your herd from shadow hands. We also had the secondary theme "Darkness".
 
-## 🎬 Trailer / Screenshots
+## 🎬 Screenshots
 **[Screenshot 1]**
 **[Screenshot 2]**
 
-_(Optional: Add a gameplay trailer link)_  
-**[🎥 Watch the Trailer]**
-
 ## 🎮 How to Play
-- **Objective:** *(Explain the goal of the game, e.g., "Survive as long as possible while dodging obstacles.")*
+- **Objective:** Keep you rherd alive the longuest by creating fences that prevent the shadow hands from killing them.
 - **Controls:**
+- _This section is not done!_
     - 🕹️ **Move:** `Arrow Keys` / `WASD`
     - 🦘 **Jump:** `Space`
     - 🎯 **Attack:** `Left Mouse Button`
     - ❌ **Pause:** `Esc`
-
-_(Feel free to adjust controls for your game!)_
 
 ## 🚀 Play the Game
 
@@ -30,7 +26,7 @@ _(Feel free to adjust controls for your game!)_
 [🔗 Play Now](https://mukki.github.io/game-jam-h2025/)
 
 ### ⬇️ Download
-_(Feel free to link to an itch.io download page!)_
+_This section is not done!_
 - **[Windows]**
 - **[macOS]**
 - **[Linux]**
@@ -41,7 +37,7 @@ _(Feel free to link to an itch.io download page!)_
 - **Tools:** **[Add them]**
 
 ## 👥 Team Members
-- [Jérémy Bouchard](https://github.com/Mukki) - Developer
+- [Jérémy Bouchard](https://github.com/Mukki) - Developer, shader, artist
 - **[Your Name](https://yourportfolio.com)** - Role (e.g., Programmer)
 - **[Teammate Name](https://teammateportfolio.com)** - Role (e.g., Artist)
 - **[Teammate Name](https://teammateportfolio.com)** - Role (e.g., Sound Designer)
