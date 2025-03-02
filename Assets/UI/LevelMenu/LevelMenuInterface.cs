@@ -131,6 +131,7 @@ public class LevelMenuInterface : MonoBehaviour
 
     private void OnNightEnd()
     {
+        GameManager.Instance.PayMoney(-AnimalManager.Instance.TotalValue());
         NightClockIsActive = false;
         DayTimer.Reset();
     }

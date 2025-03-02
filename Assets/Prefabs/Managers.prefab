@@ -74,7 +74,7 @@ MonoBehaviour:
   _persistent: 1
   Money: 100
   LenghtOfDay: 15
-  LenghtOfNight: 45
+  LenghtOfNight: 90
   StMethodeIsASecteurOfStFelicien: 0
   CurrentDay: 1
   MenuMusic: {fileID: 0}
