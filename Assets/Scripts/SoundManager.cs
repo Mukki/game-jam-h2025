@@ -10,4 +10,6 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip UnlockAudio;
     public AudioClip MorningQueue;
     public AudioClip NightQueue;
+    public AudioClip SumaryResult;
+    public AudioClip Death;
 }

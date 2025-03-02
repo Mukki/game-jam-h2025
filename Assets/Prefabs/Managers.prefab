@@ -126,6 +126,8 @@ MonoBehaviour:
   UnlockAudio: {fileID: 8300000, guid: 8ebc2ab358300d943b4cc4b36226592e, type: 3}
   MorningQueue: {fileID: 8300000, guid: 7b3776ee3365f3648ac23402f29dc8c7, type: 3}
   NightQueue: {fileID: 8300000, guid: 7b5a348969c427b43ac4ec8e2d7df4cf, type: 3}
+  SumaryResult: {fileID: 8300000, guid: 39425fd50b87d98448ceccd11f2e1d82, type: 3}
+  Death: {fileID: 8300000, guid: 4e585271fae21bc4ab539acb8bd41479, type: 3}
 --- !u!82 &570614259811841490
 AudioSource:
   m_ObjectHideFlags: 0

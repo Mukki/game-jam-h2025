@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentContainer: {fileID: 9179492280452404676}
-  summaryObj: {fileID: 0}
+  unlockInfo: {fileID: 0}
 --- !u!1 &7530357897719084883
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -108.44501, y: -101.62}
+  m_AnchoredPosition: {x: -108.44501, y: -131.62}
   m_SizeDelta: {x: 316.89, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2871863683207714645
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 20
+    m_Top: 50
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 25

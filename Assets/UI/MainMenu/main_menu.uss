@@ -42,8 +42,8 @@
 
 .logo {
     -unity-background-image-tint-color: rgb(56, 56, 56);
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 200%;
+    min-height: 50%;
     background-color: rgba(255, 11, 11, 0);
     background-image: url("project://database/Assets/ShadowHand/Hand.png?fileID=21300000&guid=0648166b9642f43c5ae7b142eb6f7dc9&type=3#Hand");
 }
