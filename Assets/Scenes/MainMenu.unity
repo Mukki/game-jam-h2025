@@ -764,6 +764,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfDay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfNight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7804296191008146639, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
       propertyPath: m_Name
       value: Managers

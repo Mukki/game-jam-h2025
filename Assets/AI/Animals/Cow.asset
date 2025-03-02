@@ -18,6 +18,7 @@ MonoBehaviour:
   BreedingCooldown: 2
   MaxBabyPerDay: 2
   SellValue: 1
+  ProductName: Milk
   Photo: {fileID: 21300000, guid: 5865cd9d6d1c794458ef02aee3d03e31, type: 3}
   ViewRange:
     Radius: 4
