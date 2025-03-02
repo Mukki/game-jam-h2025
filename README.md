@@ -4,12 +4,11 @@
 *Manage your growing herd while fending off shadowy hands at night.*
 
 ## 🏆 About the Game
-_Haunted Homestead_ was created for Université du Québec at Chicoutimi's WonderJam, a 48h game jam hosted from February 28th, 2025 to March 2nd, 2025.  
+_Haunted Homestead_ was created for [Université du Québec at Chicoutimi's WonderJam](https://itch.io/jam/wonderjam-uqac-h25), a 48h game jam hosted from February 28th, 2025 to March 2nd, 2025.  
 The theme for the jam was "Frontiers", and our game interprets it by playing on the fact that you must create frontiers to protect your herd from shadow hands. We also had the secondary theme "Darkness".
 
 ## 🎬 Screenshots
-**[Screenshot 1]**
-**[Screenshot 2]**
+<img width="607" alt="image" src="https://github.com/user-attachments/assets/a3fae9ed-22a6-43c7-9db1-45a6ba2b7e9d" />
 
 ## 🎮 How to Play
 - **Objective:** Keep you rherd alive the longuest by creating fences that prevent the shadow hands from killing them.
