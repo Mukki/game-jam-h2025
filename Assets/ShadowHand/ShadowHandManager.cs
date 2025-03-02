@@ -9,17 +9,17 @@ public class ShadowHandManager : Singleton<ShadowHandManager>
 
     private void OnEnable()
     {
-        GameEvent.Register(Event.DayStart, OnDayStart);
         GameEvent.Register(Event.NightStart, OnNightStart);
+        GameEvent.Register(Event.NightEnd, OnNightEnd);
     }
 
     private void OnDisable()
     {
-        GameEvent.Unregister(Event.DayStart, OnDayStart);
         GameEvent.Unregister(Event.NightStart, OnNightStart);
+        GameEvent.Unregister(Event.NightEnd, OnNightEnd);
     }
 
-    private void OnDayStart()
+    private void OnNightEnd()
     {
         foreach (GameObject hand in hands)
         {
