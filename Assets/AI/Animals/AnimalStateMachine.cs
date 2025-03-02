@@ -29,6 +29,8 @@ public class AnimalStateMachine : BaseStateMachine
 
     public bool ForceToSleep = false;
 
+    public int DayBorn;
+
     protected override void Awake()
     {
         base.Awake();
