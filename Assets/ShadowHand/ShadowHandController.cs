@@ -1,20 +1,26 @@
 using UnityEngine;
 using System.Collections;
 
-public class CreepyHandController : MonoBehaviour
+public class ShadowHandController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float wiggleAmount = 0.2f;
     public int wiggleCount = 2;
+    public float wiggleAngle = 10f;
     public float retreatSpeed = 5f;
+    public float wiggleDuration = 0.1f;
 
     private Vector3 initialPosition;
+    private Quaternion initialRotation;
     private bool isInterrupted = false;
     private Transform target;
+    private Camera mainCamera;
 
     void Start()
     {
+        mainCamera = Camera.main;
         initialPosition = transform.position;
+        initialRotation = transform.rotation;
     }
 
     public void Grab(GameObject newTarget)
@@ -53,11 +59,14 @@ public class CreepyHandController : MonoBehaviour
     {
         for (int i = 0; i < wiggleCount; i++)
         {
-            transform.position += transform.right * wiggleAmount;
-            yield return new WaitForSeconds(0.1f);
-            transform.position -= transform.right * wiggleAmount;
-            yield return new WaitForSeconds(0.1f);
+            Quaternion leftTilt = Quaternion.Euler(0, 0, wiggleAngle);
+            Quaternion rightTilt = Quaternion.Euler(0, 0, -wiggleAngle);
+
+            yield return StartCoroutine(RotateTo(leftTilt * transform.rotation, wiggleDuration));
+            yield return StartCoroutine(RotateTo(rightTilt * transform.rotation, wiggleDuration));
         }
+        
+        yield return StartCoroutine(RotateTo(initialRotation, wiggleDuration)); // Reset rotation
     }
 
     IEnumerator MoveToPosition(Vector3 destination, float speed)
@@ -67,5 +76,25 @@ public class CreepyHandController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
             yield return null;
         }
+    }
+    
+    IEnumerator RotateTo(Quaternion targetRotation, float duration)
+    {
+        float timeElapsed = 0;
+        Quaternion startRotation = transform.rotation;
+
+        while (timeElapsed < duration)
+        {
+            transform.rotation = Quaternion.Lerp(startRotation, targetRotation, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.rotation = targetRotation;
+    }
+
+    void LateUpdate()
+    {
+        transform.rotation = mainCamera.transform.rotation;
     }
 }

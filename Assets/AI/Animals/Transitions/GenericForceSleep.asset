@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b589c12c5fa989419b6803a2233044d, type: 3}
   m_Name: GenericForceSleep
   m_EditorClassIdentifier: 
-  Decision: {fileID: 0}
-  TrueState: {fileID: 0}
-  FalseState: {fileID: 0}
+  Decision: {fileID: 11400000, guid: bc76506be4451d5409a5de0691deec31, type: 2}
+  TrueState: {fileID: 11400000, guid: a09c52e959604e7449aed34b2c4b16e8, type: 2}
+  FalseState: {fileID: 11400000, guid: 949058c69e3f7104392f9a151114bfe9, type: 2}

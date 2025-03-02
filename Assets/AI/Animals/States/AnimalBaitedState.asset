@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db901795e6c561f4aaa08f3563a7b505, type: 3}
+  m_Name: AnimalBaitedState
+  m_EditorClassIdentifier: 
+  StateName: 
+  EnterActions:
+  - {fileID: 11400000, guid: b3b2267b0bd9ff6438819550ad75008e, type: 2}
+  Actions:
+  - {fileID: 11400000, guid: e2ecbabb5af495341abb7f7e055c6fec, type: 2}
+  ExitActions: []
+  Transitions:
+  - {fileID: 11400000, guid: e449a63abcdb290499f37de6b20859fd, type: 2}

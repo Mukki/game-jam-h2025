@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
@@ -13,9 +15,15 @@ public class MainMenuController : MonoBehaviour
     public Button rulesButton;
     public Button quitButton;
 
+    public List<Transform> animalSpawns = new List<Transform>();
+    public List<GameObject> animals = new List<GameObject>();
+    public List<GameObject> animalPrefabs = new List<GameObject>();
+    public ShadowHandController shadowHandController;
+
     private void Awake()
     {
         ui = GetComponent<UIDocument>().rootVisualElement;
+        StartCoroutine(VictimizeAnimals());
     }
 
     private void OnEnable()
@@ -56,5 +64,23 @@ public class MainMenuController : MonoBehaviour
         #if UNITY_EDITOR
         EditorApplication.isPlaying = false;
         #endif
+    }
+
+    private IEnumerator VictimizeAnimals()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3, 8));
+
+            int index = Random.Range(0, animals.Count);
+            GameObject victim = animals[index];
+            animals[index] = null;
+
+            shadowHandController.Grab(victim);
+
+            yield return new WaitForSeconds(Random.Range(10, 15));
+
+            animals[index] = Instantiate(animalPrefabs[Random.Range(0, animalPrefabs.Count)], animalSpawns[index].position, animalSpawns[index].rotation);
+        }
     }
 }

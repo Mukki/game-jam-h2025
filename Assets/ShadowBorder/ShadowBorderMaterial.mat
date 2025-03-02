@@ -101,7 +101,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlurAmount: 0.05
-    - _BorderSize: 0.064
+    - _BorderSize: 0.05
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -116,8 +116,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NoiseScale: 8
-    - _NoiseStrength: 0.069
+    - _NoiseScale: 15.3
+    - _NoiseStrength: 0.018
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
@@ -128,9 +128,9 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _WaveFrequency: 1.81
-    - _WaveSpeed: 0.95
-    - _WaveStrength: 0.0066
+    - _WaveFrequency: 2.23
+    - _WaveSpeed: 0.28
+    - _WaveStrength: 0.01
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
