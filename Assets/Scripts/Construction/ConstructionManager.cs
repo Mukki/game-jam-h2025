@@ -39,6 +39,11 @@ public class ConstructionManager : Singleton<ConstructionManager>
             return;
         }
 
+        if (constructionsParent == null)
+        {
+            constructionsParent = new GameObject("Constructions").transform;
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
             availableConstructions[currentConstruction].ProcessCancel();

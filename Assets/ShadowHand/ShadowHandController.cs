@@ -17,25 +17,36 @@ public class ShadowHandController : MonoBehaviour
 
     void Start()
     {
-        handMaterial = GetComponent<SpriteRenderer>().material;
+        handMaterial = GetComponentInChildren<SpriteRenderer>().material;
         startPosition = transform.position;
         mainCamera = Camera.main;
     }
 
     void Update()
     {
+        if (target == null)
+        {
+            return;
+        }
+
         if (!grabbing && !retreating)
         {
             // Move towards target
             transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * speed);
+            dissolveAmount = Mathf.Lerp(dissolveAmount, 0f, Time.deltaTime * dissolveSpeed);
+            handMaterial.SetFloat("_DissolveAmount", dissolveAmount);
+
+            if (Vector3.Distance(transform.position, target.position) < 0.2f)
+            {
+                grabbing = true;
+            }
         }
 
         if (grabbing)
         {
             // Move faster toward the target
             transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * grabSpeed);
-            dissolveAmount = Mathf.Lerp(dissolveAmount, 1f, Time.deltaTime * dissolveSpeed);
-            handMaterial.SetFloat("_DissolveAmount", dissolveAmount);
+            
 
             if (Vector3.Distance(transform.position, target.position) < 0.2f)
             {
@@ -46,13 +57,16 @@ public class ShadowHandController : MonoBehaviour
 
         if (retreating)
         {
+            target.SetParent(transform);
             transform.position = Vector3.Lerp(transform.position, startPosition, Time.deltaTime * retreatSpeed);
-            dissolveAmount = Mathf.Lerp(dissolveAmount, 0f, Time.deltaTime * dissolveSpeed);
+            dissolveAmount = Mathf.Lerp(dissolveAmount, 1f, Time.deltaTime * dissolveSpeed);
             handMaterial.SetFloat("_DissolveAmount", dissolveAmount);
 
             if (Vector3.Distance(transform.position, startPosition) < 0.5f)
             {
                 retreating = false;
+                Destroy(target.gameObject);
+                target = null;
             }
         }
     }
