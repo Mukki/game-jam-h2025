@@ -33,7 +33,8 @@ public class ShadowHandManager : Singleton<ShadowHandManager>
     {
         for (int i = 0; i < handCount; i++)
         {
-            hands.Add(Instantiate(handPrefab));
+            Transform spawn = StuffSpawner.Instance.handSpawners[Random.Range(0, StuffSpawner.Instance.handSpawners.Count)];
+            hands.Add(Instantiate(handPrefab, spawn.position, Quaternion.identity));
         }
     }
 }

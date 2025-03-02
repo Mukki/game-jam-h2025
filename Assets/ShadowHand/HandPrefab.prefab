@@ -132,9 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4b88ad7f34b49fb88703d0d3581c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 3
   wiggleAmount: 0.2
   wiggleCount: 2
   wiggleAngle: 10
   retreatSpeed: 2.5
   wiggleDuration: 0.1
+  isFakeHand: 0
