@@ -416,9 +416,6 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: d13c279cd4bca9f4cabdcd185037c1d0, type: 2}
   RandomAnimalState: 0
   FoodTarget: {fileID: 0}
-  FuckTarget: {fileID: 0}
-  WillSpawnBaby: 0
-  ForceToFuck: 0
   ForceToSleep: 0
   DayBorn: 0
   CurrentBabyBorn: 0
@@ -808,7 +805,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.466
+      value: 4.93
       objectReference: {fileID: 0}
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -865,7 +862,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.82
+      value: -5.32
       objectReference: {fileID: 0}
     - target: {fileID: 4682064785437531915, guid: 833ba8840314c1547b3c4e9ef9a1ddcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -926,7 +923,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3594223516415954315, guid: 2270afe6d90bad844bd3f4080fcf1d70, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 6.36
       objectReference: {fileID: 0}
     - target: {fileID: 3594223516415954315, guid: 2270afe6d90bad844bd3f4080fcf1d70, type: 3}
       propertyPath: m_LocalPosition.y

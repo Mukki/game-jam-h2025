@@ -9,25 +9,19 @@ public class ExecuteAnimalSearchFuckBuddyAction : FSMAction
         var asm = (AnimalStateMachine)stateMachine;
         asm.IncrementSearchFuckCounter();
 
-        if (asm.FuckTarget == null)
+        Vector3 currentPosition = asm.transform.position;
+        Vector3 forward = asm.transform.forward;
+        var possibleTargets = Physics.OverlapSphere(currentPosition + forward * asm.HormoneRange.Offset, 
+            asm.HormoneRange.Radius, LayerMask.GetMask("Animal"))
+            .Where(x => x.gameObject != asm.gameObject);
+
+        foreach (var target in possibleTargets)
         {
-            Vector3 currentPosition = asm.transform.position;
-            Vector3 forward = asm.transform.forward;
-            var possibleTargets = Physics.OverlapSphere(currentPosition + forward * asm.HormoneRange.Offset, 
-                asm.HormoneRange.Radius, LayerMask.GetMask("Animal"))
-                .Where(x => x.gameObject != asm.gameObject);
-
-            foreach (var target in possibleTargets)
+            if (target.TryGetComponent<AnimalStateMachine>(out var tasm) 
+                && tasm.IsFuckable(asm.AnimalType))
             {
-                if (target.TryGetComponent<AnimalStateMachine>(out var tasm) && tasm.IsFuckable(asm.AnimalType))
-                {
-                    asm.FuckTarget = tasm.gameObject;
-                    asm.WillSpawnBaby = true;
-
-                    tasm.FuckTarget = asm.gameObject;
-                    tasm.WillSpawnBaby = false;
-                    tasm.ForceToFuck = true;
-                }
+                BreedingManager.Instance.AddCouple(asm, tasm);
+                break;
             }
         }
     }

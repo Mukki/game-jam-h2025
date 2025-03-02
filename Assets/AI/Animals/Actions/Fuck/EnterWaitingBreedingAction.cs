@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "FSM/Actions/Animal/Fuck/Reach/Exit")]
-public class ExitAnimalReachFuckBuddyAction : FSMAction
+[CreateAssetMenu(menuName = "FSM/Actions/Animal/Fuck/Wait/Enter")]
+public class EnterWaitingBreedingAction : FSMAction
 {
     public override void Execute(BaseStateMachine stateMachine)
     {
@@ -13,5 +13,7 @@ public class ExitAnimalReachFuckBuddyAction : FSMAction
         navAgent.isStopped = true;
         navAgent.ResetPath();
         navAgent.velocity = Vector3.zero;
+
+        BreedingManager.Instance.ParentReachedDestination(asm.ID);
     }
 }

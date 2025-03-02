@@ -13,7 +13,6 @@ public class AnimalManager : Singleton<AnimalManager>
     private int _dayDeath = 0;
     public float SpawnOffset = 0.5f;
 
-
     private void Start()
     {
         _prefabs = Prefabs.ToDictionary(key => key.Type, value => value.Prefab);
@@ -40,7 +39,6 @@ public class AnimalManager : Singleton<AnimalManager>
         GameObject newAnimal = Instantiate(_prefabs[type], spawnPosition, Quaternion.identity);
         var asm = newAnimal.GetComponent<AnimalStateMachine>();
         asm.DayBorn = GameManager.Instance.CurrentDay;
-        asm.CurrentBabyBorn = asm.MaxBabyPerDay;
         _animals.Add(newAnimal);
     }
 
@@ -52,6 +50,7 @@ public class AnimalManager : Singleton<AnimalManager>
     protected virtual void OnDayStart()
     {
         _dayDeath = 0;
+        BreedingManager.Instance.ClearCouples();
     }
 
     public int GetAnimalCount() => _animals.Count;

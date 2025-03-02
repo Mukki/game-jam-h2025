@@ -152,7 +152,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -177,9 +177,6 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: a94c1b8131d42f54396b8f4bb3464ce8, type: 2}
   RandomAnimalState: 0
   FoodTarget: {fileID: 0}
-  FuckTarget: {fileID: 0}
-  WillSpawnBaby: 0
-  ForceToFuck: 0
   ForceToSleep: 0
   DayBorn: 1
   CurrentBabyBorn: 0

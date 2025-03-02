@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     public int CurrentDay = 1;
 
-    private IEnumerator _couroutine;
+    private IEnumerator _coroutine;
 
     public AudioClip MenuMusic;
     public AudioClip DayMusic;
@@ -48,8 +48,8 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("OnStartOfDayCallback");
         GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, null);
-        _couroutine = DayCycleCountDown(LenghtOfDay);
-        StartCoroutine(_couroutine);
+        _coroutine = DayCycleCountDown(LenghtOfDay);
+        StartCoroutine(_coroutine);
     }
 
     public void EndOfDay()
@@ -63,8 +63,8 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("StartOfNight");
         SoundManager.Instance.MySource.clip = SoundManager.Instance.NightAudio;
         SoundManager.Instance.MySource.Play();
-        _couroutine = NightCycleCountDown(LenghtOfNight);
-        StartCoroutine(_couroutine);
+        _coroutine = NightCycleCountDown(LenghtOfNight);
+        StartCoroutine(_coroutine);
     }
 
     public void EndOfNight()

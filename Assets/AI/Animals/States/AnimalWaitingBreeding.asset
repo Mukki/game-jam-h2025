@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db901795e6c561f4aaa08f3563a7b505, type: 3}
-  m_Name: AnimalReachingFuckBuddy
+  m_Name: AnimalWaitingBreeding
   m_EditorClassIdentifier: 
   StateName: 
   EnterActions:
-  - {fileID: 11400000, guid: a4fc03a47b2bde044bc97ba80f762ed5, type: 2}
-  Actions:
-  - {fileID: 11400000, guid: 7746793505fc1ef4891e500e0afc6fa5, type: 2}
-  ExitActions:
-  - {fileID: 11400000, guid: 0f5f0a2fdadb10e40a62b4311769cb64, type: 2}
+  - {fileID: 11400000, guid: 53dffb87c258fe04a9cd65d4deb2a46f, type: 2}
+  Actions: []
+  ExitActions: []
   Transitions:
   - {fileID: 11400000, guid: 9814666967ac563428b668c1920479c4, type: 2}
-  - {fileID: 11400000, guid: 896db6a80367df74d8521e21e22869da, type: 2}
+  - {fileID: 11400000, guid: 2abac3695ef585f4592554955d68d5f3, type: 2}
