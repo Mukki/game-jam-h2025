@@ -9,9 +9,17 @@ public class ExitAnimalReachFuckBuddyAction : FSMAction
         var asm = (AnimalStateMachine)stateMachine;
         asm.RandomAnimalState = AnimalState.None;
 
-        if (asm.WillSpawnBaby)
+        // Insure both target are valid, because at some point,
+        // they might loose focus on each other
+        if (asm.FuckTarget != null 
+            && asm.FuckTarget.TryGetComponent<AnimalStateMachine>(out var target)
+            && target.FuckTarget == asm.gameObject)
         {
-            GameEvent<AnimalTypes, Vector3>.Call(Event.SpawnAnimal, asm.AnimalType, asm.transform.position);
+            if (asm.WillSpawnBaby)
+            {
+                GameEvent<AnimalTypes, Vector3>.Call(Event.SpawnAnimal, asm.AnimalType, asm.transform.position);
+            }
+            asm.CurrentBabyBorn++;
         }
 
         asm.FuckTarget = null;
@@ -20,5 +28,6 @@ public class ExitAnimalReachFuckBuddyAction : FSMAction
 
         NavMeshAgent navAgent = asm.GetComponent<NavMeshAgent>();
         navAgent.isStopped = true;
+        navAgent.ResetPath();
     }
 }

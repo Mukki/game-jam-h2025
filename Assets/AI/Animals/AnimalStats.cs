@@ -14,16 +14,24 @@ public class AnimalStats : ScriptableObject
     public AnimalTypes AnimalType;
 
     public float RandomWanderRange = 1.5f;
+    public float StoppingDistanceOffset = 0.5f;
+    public int MaxBabyPerDay = 2;
 
     public FieldOfView ViewRange = new()
     {
-        Range = 3,
+        Radius = 3,
         Offset = 2
     };
 
     public FieldOfView HormoneRange = new()
     {
-        Range = 4,
+        Radius = 4,
+        Offset = 1,
+    };
+
+    public FieldOfView SmellRange = new()
+    {
+        Radius = 5,
         Offset = 1,
     };
 

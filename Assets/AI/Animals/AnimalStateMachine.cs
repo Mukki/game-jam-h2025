@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public enum AnimalState
@@ -7,7 +9,7 @@ public enum AnimalState
     Wander,
     //Flocking,
     //Fleeing,
-    //Baited,
+    Baited,
     WantsToFuck,
     //Sleeping
 }
@@ -18,18 +20,25 @@ public class AnimalStateMachine : BaseStateMachine
     [SerializeField] private Counter _fuckSearchCounter;
     [SerializeField] private AnimalStats _stats;
 
+    public Guid id = Guid.NewGuid();
+
     public AnimalState RandomAnimalState = AnimalState.None;
     public float RandomWanderRange => _stats.RandomWanderRange;
+    public float StoppingDistanceOffset => _stats.StoppingDistanceOffset;
     public AnimalTypes AnimalType => _stats.AnimalType;
     public FieldOfView HormoneRange => _stats.HormoneRange;
+    public FieldOfView SmellRange => _stats.SmellRange;
+    public int MaxBabyPerDay => _stats.MaxBabyPerDay;
 
+    public GameObject FoodTarget;
     public GameObject FuckTarget;
     public bool WillSpawnBaby = false;
     public bool ForceToFuck = false;
 
     public bool ForceToSleep = false;
 
-    public int DayBorn;
+    public int DayBorn = 1;
+    public int CurrentBabyBorn = 0;
 
     protected override void Awake()
     {
@@ -63,6 +72,7 @@ public class AnimalStateMachine : BaseStateMachine
     private void ForceAwake()
     {
         ForceToSleep = false;
+        CurrentBabyBorn = 0;
     }
 
     /* Idle */
@@ -79,7 +89,8 @@ public class AnimalStateMachine : BaseStateMachine
     public bool IsFuckable(AnimalTypes partnerType)
     {
         return partnerType == _stats.AnimalType 
-            && FuckTarget == null;
+            && FuckTarget == null
+            && CurrentBabyBorn < _stats.MaxBabyPerDay;
     }
     /********/
 }
