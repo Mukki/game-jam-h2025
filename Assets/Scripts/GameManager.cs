@@ -1,72 +1,77 @@
+using System;
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
-    public float money;
-    public float lenghOfDay;
-    public float lenghOfNight;
+    public float Money;
+    public float LenghtOfDay;
+    public float LenghtOfNight;
 
-    public bool stMethodeIsASecteurOfStFelicien = false;
+    public bool StMethodeIsASecteurOfStFelicien = true;
+
+    public int CurrentDay = 1;
+
+    private IEnumerator couroutine;
 
     protected override void OnAwake()
     {
         base.OnAwake();
 
-        money = 100.0f;
-    }
-
-    public void OnEnable()
-    {
-        GameEvent.Register(Event.DayStart, StartOfDay);
-        GameEvent.Register(Event.DayEnd, EndOfDay);
-        GameEvent.Register(Event.NightStart, StartOfNight);
-        GameEvent.Register(Event.NightEnd, EndOfNight);
-        GameEvent.Register(Event.GameEnd, GameOver);
-    }
-
-    public void OnDisable()
-    {
-        GameEvent.Unregister(Event.DayStart, StartOfDay);
-        GameEvent.Unregister(Event.DayEnd, EndOfDay);
-        GameEvent.Unregister(Event.NightStart, StartOfNight);
-        GameEvent.Unregister(Event.NightEnd, EndOfNight);
-        GameEvent.Unregister(Event.GameEnd, GameOver);
+        Money = 100.0f;
+        LenghtOfDay = 20.0f;
+        LenghtOfNight = 40.0f;
     }
 
     public void StartOfDay()
     {
-        GameEvent.Call(Event.EnableActionButtons);
+        couroutine = DayCycleCountDown(LenghtOfDay);
+        StartCoroutine(couroutine);
     }
 
     public void EndOfDay()
     {
-        GameEvent.Call(Event.DisableActionButtons);
-
-        GameEvent.Call(Event.NightStart);
+        StartOfNight();
     }
 
     public void StartOfNight()
     {
-         Debug.Log("NightStart");
-         Debug.Log("Start Night timer");
-         Debug.Log("End Night timer");
-         GameEvent.Call(Event.NightEnd);
+         couroutine = NightCycleCountDown(LenghtOfNight);
+         StartCoroutine(couroutine);
     }
 
     public void EndOfNight()
     {
-        Debug.Log("if AnimalManager.Instance.animalCount == 0 -> GameOver()");
-        Debug.Log("else GameEvent.Call(Event.EnableActionButtons)");
+        // if AnimalManager.Instance.animalCount == 0 -> GameOver();
+        // else StartOfDay();
+        CurrentDay++;
+        StartOfDay();
     }
 
     public void GameOver()
     {
-        Debug.Log("Jay, put the shader here!");
+        /*Debug.Log("Jay, put the shader here!");*/
     }
 
-    public void ChangeMoney(float amount)
+    public void PayMoney(float amount)
     {
-        money += amount;
+        Money -= amount;
         GameEvent.Call(Event.MoneyChanged);
+    }
+
+    private IEnumerator DayCycleCountDown(float wait)
+    {
+        GameEvent.Call(Event.DayStart);
+        yield return new WaitForSeconds(wait);
+        GameEvent.Call(Event.DayEnd);
+        EndOfDay();
+    }
+
+    private IEnumerator NightCycleCountDown(float wait)
+    {
+        GameEvent.Call(Event.NightStart);
+        yield return new WaitForSeconds(wait);
+        GameEvent.Call(Event.NightEnd);
+        EndOfNight();
     }
 }

@@ -5,16 +5,17 @@
 }
 
 .menu {
-    background-color: rgb(255, 0, 255);
     align-items: center;
     justify-content: center;
-    align-self: center;
-    align-content: center;
+    align-self: auto;
+    align-content: auto;
+    padding-right: 0;
 }
 
 .unity-button {
-    background-color: rgb(214, 255, 10);
-    min-width: 600px;
+    min-width: 400px;
+    align-items: auto;
+    align-content: auto;
 }
 
 .unity-button:hover {
@@ -23,6 +24,11 @@
 }
 
 .logo {
+    -unity-background-image-tint-color: rgb(56, 56, 56);
+    min-width: 200px;
+    min-height: 200px;
+    background-color: rgba(255, 11, 11, 0);
+    background-image: url("project://database/Assets/ShadowHand/Hand.png?fileID=21300000&guid=0648166b9642f43c5ae7b142eb6f7dc9&type=3#Hand");
 }
 
 .unity-text-element {

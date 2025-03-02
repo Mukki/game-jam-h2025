@@ -4,6 +4,7 @@ public abstract class ConstructionBase : ScriptableObject
 {
     public float pricePerUnit;
     public GameObject prefab;
+    public GameObject ghostPrefab;
     public Sprite Image;
     public string Name;
 
@@ -17,7 +18,7 @@ public abstract class ConstructionBase : ScriptableObject
 
     protected bool CanConstruct(float price)
     {
-        return GameManager.Instance.money >= price;
+        return GameManager.Instance.Money >= price;
     }
 
     protected void TryConstruct(float price)
@@ -27,7 +28,7 @@ public abstract class ConstructionBase : ScriptableObject
             ConstructionManager.Instance.ResetGhost();
             OnConstruct();
 
-            GameManager.Instance.money -= price;
+            GameManager.Instance.PayMoney(price);
         }
     }
 }

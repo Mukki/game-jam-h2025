@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pricePerUnit: 6
   prefab: {fileID: 9026458517640432127, guid: ebb9896c0a8947943b3e8b38fceda1b0, type: 3}
+  ghostPrefab: {fileID: 9026458517640432127, guid: 3891b61cc10dfd1458f2fc3d57129d5e, type: 3}
   Image: {fileID: 0}
   Name: Grid Fence

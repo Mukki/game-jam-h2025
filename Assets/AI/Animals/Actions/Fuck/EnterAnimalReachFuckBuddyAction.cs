@@ -16,6 +16,8 @@ public class EnterAnimalReachFuckBuddyAction : FSMAction
             z = (currentPosition.z + fuckTargetPosition.z) / 2
         };
 
-        asm.GetComponent<NavMeshAgent>().SetDestination(meetingPoint);
+        var navAgent = asm.GetComponent<NavMeshAgent>();
+        navAgent.SetDestination(meetingPoint);
+        navAgent.isStopped = false;
     }
 }
