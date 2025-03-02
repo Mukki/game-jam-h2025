@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pricePerUnit: 3
   prefab: {fileID: 9026458517640432127, guid: 30e1303b358042740a2e0e05c0134766, type: 3}
-  ghostPrefab: {fileID: 9026458517640432127, guid: 25bf2647d54f0694fac7c84a4146e23d, type: 3}
+  ghostPrefab: {fileID: 9026458517640432127, guid: c7e7a7ff6b1f96149b9164d6f2428101, type: 3}
   Image: {fileID: 0}
   Name: Lamp

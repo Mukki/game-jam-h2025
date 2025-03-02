@@ -240,6 +240,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &927702755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 927702757}
+  m_Layer: 0
+  m_Name: Constructions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &927702757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927702755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1055476367
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +488,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.016666668
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 0.52
   m_NavMeshData: {fileID: 23800000, guid: 63d8c9de54d6782419ee2aa533298bd9, type: 2}
   m_BuildHeightMesh: 0
@@ -799,10 +830,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: Money
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfDay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfNight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7804296191008146639, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 7960728655360106100, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: constructionsParent
+      value: 
+      objectReference: {fileID: 927702757}
+    - target: {fileID: 7960728655360106100, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: allConstructions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7960728655360106100, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'allConstructions.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}
+    - target: {fileID: 7960728655360106100, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'allConstructions.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 00146f90810a4e64d85741b2d43a8070, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -818,3 +877,4 @@ SceneRoots:
   - {fileID: 1621989449}
   - {fileID: 5441223010632831564}
   - {fileID: 1055476370}
+  - {fileID: 927702757}

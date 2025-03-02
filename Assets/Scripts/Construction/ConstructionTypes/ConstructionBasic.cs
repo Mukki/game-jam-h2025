@@ -14,7 +14,7 @@ public class ConstructionBasic : ConstructionBase
 
     public override void OnMouseEnter()
     {
-        ghostPreview = Instantiate(ghostPrefab);
+        ghostPreview = Instantiate(ghostPrefab, ConstructionManager.Instance.constructionsParent);
     }
 
     public override void OnMouseLeave()
@@ -43,6 +43,10 @@ public class ConstructionBasic : ConstructionBase
 
     public override void OnConstruct()
     {
-        Instantiate(prefab, targetPosition, Quaternion.identity);
+        GameObject newObject = Instantiate(prefab, targetPosition, Quaternion.identity, ConstructionManager.Instance.constructionsParent);
+
+        Vector3 newRotation = Vector3.zero;
+        newRotation.y = Random.Range(0, 360);
+        newObject.transform.eulerAngles = newRotation;
     }
 }

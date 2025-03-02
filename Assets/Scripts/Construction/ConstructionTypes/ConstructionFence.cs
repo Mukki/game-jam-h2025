@@ -64,7 +64,7 @@ public class ConstructionFence : ConstructionBase
     {
         foreach (GameObject fence in fences)
         {
-            GameObject newFence = Instantiate(prefab, fence.transform.position, fence.transform.rotation);
+            GameObject newFence = Instantiate(prefab, fence.transform.position, fence.transform.rotation, ConstructionManager.Instance.constructionsParent);
             ConstructionManager.Instance.allFences.Add(newFence);
         }
     }
@@ -75,7 +75,7 @@ public class ConstructionFence : ConstructionBase
 
         while (fences.Count < targetLength)
         {
-            fences.Add(Instantiate(ghostPrefab));
+            fences.Add(Instantiate(ghostPrefab, ConstructionManager.Instance.constructionsParent));
         }
 
         while (fences.Count > targetLength)

@@ -26,9 +26,7 @@ public abstract class ConstructionBase : ScriptableObject
     {
         if (CanConstruct(price))
         {
-            ConstructionManager.Instance.ResetGhost();
             OnConstruct();
-
             GameManager.Instance.PayMoney(price);
         }
     }
