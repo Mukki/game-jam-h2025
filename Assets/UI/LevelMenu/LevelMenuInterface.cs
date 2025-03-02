@@ -194,8 +194,6 @@ public class LevelMenuInterface : MonoBehaviour
             {
                 Destroy(info);
             }
-
-            var test = "test";
         }
     }
 
