@@ -44,8 +44,8 @@ public class GameManager : Singleton<GameManager>
             SoundManager.Instance.MySource.clip = SoundManager.Instance.MorningQueue;
             SoundManager.Instance.MySource.loop = false;
             SoundManager.Instance.MySource.Play();
-            _couroutine = MorningQueue(3.0f);
-            StartCoroutine(_couroutine);
+            _coroutine = MorningQueue(3.0f);
+            StartCoroutine(_coroutine);
         }
     }
 
@@ -66,8 +66,8 @@ public class GameManager : Singleton<GameManager>
         SoundManager.Instance.MySource.clip = SoundManager.Instance.NightQueue;
         SoundManager.Instance.MySource.loop = false;
         SoundManager.Instance.MySource.Play();
-        _couroutine = NightQueue(6.0f);
-        StartCoroutine(_couroutine);
+        _coroutine = NightQueue(6.0f);
+        StartCoroutine(_coroutine);
     }
 
     public void StartOfNight()
