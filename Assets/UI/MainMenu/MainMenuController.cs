@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -29,10 +30,19 @@ public class MainMenuController : MonoBehaviour
         quitButton.clicked += OnQuitButtonClicked;
     }
 
+    private void OnDisable()
+    {
+        playButton.clicked -= OnPlayButtonClicked;
+
+        rulesButton.clicked -= OnRulesButtonClicked;
+
+        quitButton.clicked -= OnQuitButtonClicked;
+    }
+
     private void OnPlayButtonClicked()
     {
         gameObject.SetActive(false);
-        GameManager.Instance.StartOfDay();
+        SceneManager.LoadScene("GameScene");
     }
 
     private void OnRulesButtonClicked()

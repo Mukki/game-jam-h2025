@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameManager : Singleton<GameManager>
@@ -17,10 +18,12 @@ public class GameManager : Singleton<GameManager>
     protected override void OnAwake()
     {
         base.OnAwake();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-        Money = 100.0f;
-        LenghtOfDay = 20.0f;
-        LenghtOfNight = 40.0f;
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void StartOfDay()
@@ -73,5 +76,10 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(wait);
         GameEvent.Call(Event.NightEnd);
         EndOfNight();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartOfDay();
     }
 }
