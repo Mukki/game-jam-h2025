@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,12 @@ public class LevelMenuInterface : MonoBehaviour
 {
     public GameObject buttonPrefab;
     public GameObject buttonParent;
+    public GameObject ProductInfoElementPrefab;
+    public GameObject ContinueButtonPrefab;
 
     public Sprite moneySprite;
-    private List<GameObject> actionButtonList = new List<GameObject>();
+    private List<GameObject> actionButtonList = new();
+    private List<GameObject> _productInfos = new();
 
     public UnlockInterface unlockInterface;
     public SummaryInterface summaryInterface;
@@ -58,6 +62,11 @@ public class LevelMenuInterface : MonoBehaviour
 
     private void DisplayDaySummary(bool active)
     {
+        if (active)
+            CreateInfos();
+        else
+            DestroyInfos();
+
         summaryInterface.gameObject.SetActive(active);
     }
 
@@ -99,5 +108,48 @@ public class LevelMenuInterface : MonoBehaviour
     {
         GetComponent<MoneyMenu>().moneyPreview.gameObject.SetActive(amount > 0);
         GetComponent<MoneyMenu>().moneyPreview.text = "(-" + amount.ToString("0.00") + ")";
+    }
+
+    public void CreateInfos()
+    {
+        foreach (var animalType in AnimalManager.Instance.GetAnimalTypesForTest())
+        {
+            GameObject alive = Instantiate(ProductInfoElementPrefab,
+                summaryInterface.parentContainer.transform);
+            var alivePanel = alive.GetComponent<SummaryPanel>();
+            //alivePanel.Image = "SOMETHING";
+            alivePanel.Name.text = $"{animalType.ProductName}(s) sold for:";
+            alivePanel.Quantity.text = AnimalManager.Instance.TotalValue(animalType.AnimalType).ToString();
+            _productInfos.Add(alive);
+
+            GameObject dead = Instantiate(ProductInfoElementPrefab,
+                summaryInterface.parentContainer.transform);
+            var deadPanel = dead.GetComponent<SummaryPanel>();
+            //dead.Image = "SOMETHING";
+            deadPanel.Name.text = $"{Enum.GetName(typeof(AnimalTypes), animalType.AnimalType)} dead:";
+            deadPanel.Quantity.text = AnimalManager.Instance.GetAnimalCount(animalType.AnimalType).ToString();
+            _productInfos.Add(dead);
+        }
+
+        GameObject totalValue = Instantiate(ProductInfoElementPrefab,
+            summaryInterface.parentContainer.transform);
+        var totalValuePanel = totalValue.GetComponent<SummaryPanel>();
+        //dead.Image = "SOMETHING";
+        totalValuePanel.Name.text = $"Total: ";
+        totalValuePanel.Quantity.text = AnimalManager.Instance.TotalValue().ToString();
+        _productInfos.Add(totalValue);
+
+        GameObject button = Instantiate(ContinueButtonPrefab,
+            summaryInterface.parentContainer.transform);
+        _productInfos.Add(button);
+    }
+
+    public void DestroyInfos()
+    {
+        foreach (var info in _productInfos)
+        {
+            _productInfos.Remove(info);
+            Destroy(info);
+        }
     }
 }
