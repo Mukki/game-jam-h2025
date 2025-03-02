@@ -13,16 +13,22 @@ MonoBehaviour:
   m_Name: Chicken
   m_EditorClassIdentifier: 
   AnimalType: 2
-  RandomWanderRange: 3
+  RandomWanderRange: 7
+  StoppingDistanceOffset: 0.5
+  BreedingCooldown: 2
+  MaxBabyPerDay: 4
   ViewRange:
-    Range: 3
-    Offset: 2
+    Radius: 2
+    Offset: 1.5
   HormoneRange:
-    Range: 4
+    Radius: 3
+    Offset: 1
+  SmellRange:
+    Radius: 2
     Offset: 1
   HornyTimeRange:
-    Min: 200
-    Max: 250
+    Min: 150
+    Max: 200
   IdleTimeRange:
     Min: 100
-    Max: 150
+    Max: 250

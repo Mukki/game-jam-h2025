@@ -48,7 +48,7 @@ public class ShadowHandController : MonoBehaviour
         if (!isInterrupted && target)
         {
             yield return StartCoroutine(WiggleHand());
-            Destroy(target.gameObject);
+            GameEvent<GameObject>.Call(Event.KillAnimal, target.gameObject);
         }
 
         yield return StartCoroutine(MoveToPosition(initialPosition, retreatSpeed));

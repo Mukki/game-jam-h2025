@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2543112488069965812}
   - component: {fileID: 6902434374662470185}
   - component: {fileID: 570614259811841490}
+  - component: {fileID: 1218154752091995626}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -82,6 +83,7 @@ MonoBehaviour:
   dayEvents:
   - {fileID: 11400000, guid: ff67c51954ff4fb408ca6ef46962531a, type: 2}
   - {fileID: 11400000, guid: d2eeb6bf36392364db88d809efae6123, type: 2}
+  - {fileID: 11400000, guid: e1dc39a81189f6347b39f9a99210b071, type: 2}
 --- !u!114 &-2543112488069965812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +223,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1218154752091995626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7804296191008146639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fef7f5fc9c39174b8171d7f59afd765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _persistent: 1
+  handCount: 1
+  handPrefab: {fileID: 5791804054356939285, guid: 596e5a64d613aac4f857e0fa4ede9acb, type: 3}
