@@ -16,5 +16,5 @@ MonoBehaviour:
   day: 5
   description: Sheeps can now spawn!
   title: Baaahh!
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d2e40fd95041e5a4a8b6157b0808d12e, type: 3}
   newAnimalType: 4

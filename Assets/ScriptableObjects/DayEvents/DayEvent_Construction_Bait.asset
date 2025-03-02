@@ -16,5 +16,5 @@ MonoBehaviour:
   day: 2
   description: Use them to attract animals to a specific position!
   title: 'New contruction : Bait'
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: fe681233e0b9192479aff9b59fe2c7ee, type: 3}
   newConstruction: {fileID: 11400000, guid: 00146f90810a4e64d85741b2d43a8070, type: 2}

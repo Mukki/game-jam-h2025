@@ -16,5 +16,5 @@ MonoBehaviour:
   day: 3
   description: Ducks can now spawn!
   title: Quack!
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8d89bfd393dcef14da2486b82eae2b5c, type: 3}
   newAnimalType: 3

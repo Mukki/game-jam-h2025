@@ -16,5 +16,5 @@ MonoBehaviour:
   day: 4
   description: Use them to scare demons away!
   title: 'New contruction : Lamp'
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b98551dd88f7f594280fe9cc89e49a1c, type: 3}
   newConstruction: {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}

@@ -15,5 +15,5 @@ MonoBehaviour:
   pricePerUnit: 4
   prefab: {fileID: 9026458517640432127, guid: 2c0c34bef30531e40b188136d7ef0c83, type: 3}
   ghostPrefab: {fileID: 9026458517640432127, guid: 3d0188fe2d0732641a988b5b790b0cb6, type: 3}
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: fe681233e0b9192479aff9b59fe2c7ee, type: 3}
   Name: Bait

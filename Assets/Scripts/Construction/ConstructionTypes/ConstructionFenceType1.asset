@@ -15,5 +15,6 @@ MonoBehaviour:
   pricePerUnit: 2
   prefab: {fileID: 9026458517640432127, guid: 370a634af046f3844a0bceaf9959308a, type: 3}
   ghostPrefab: {fileID: 9026458517640432127, guid: db93237d3b1ffef45ae20a07121efae4, type: 3}
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: b9cd98a740f98fc4fb0a2d9a118ffab3, type: 3}
   Name: Fence
+  firstPosSet: 0
