@@ -11,36 +11,31 @@ public class LevelMenuInterface : MonoBehaviour
     public Sprite moneySprite;
     private List<GameObject> actionButtonList = new List<GameObject>();
 
+    public UnlockInterface unlockInterface;
+    public SummaryInterface summaryInterface;
+
     private void OnEnable()
     {
-        GameEvent.Register(Event.DayStart, HideButtons);
-        GameEvent.Register(Event.NightStart, ShowButtons);
+        GameEvent.Register(Event.DayStart, OnDayStart);
+        GameEvent.Register(Event.NightStart, OnNightStart);
         GameEvent.Register(Event.MoneyChanged, OnMoneyChanged);
+        GameEvent<bool>.Register(Event.DisplayDaySummary, DisplayDaySummary);
+        GameEvent<DayEventBase>.Register(Event.DisplayDayEvent, DisplayDayUnlock);
         GameEvent <float>.Register(Event.MoneyPreviewReceived, OnMoneyPreviewReceived);
     }
 
     private void OnDisable()
     {
-        GameEvent.Unregister(Event.DayStart, HideButtons);
-        GameEvent.Unregister(Event.NightStart, ShowButtons);
+        GameEvent.Unregister(Event.DayStart, OnDayStart);
+        GameEvent.Unregister(Event.NightStart, OnNightStart);
         GameEvent.Unregister(Event.MoneyChanged, OnMoneyChanged);
+        GameEvent<bool>.Unregister(Event.DisplayDaySummary, DisplayDaySummary);
+        GameEvent<DayEventBase>.Unregister(Event.DisplayDayEvent, DisplayDayUnlock);
         GameEvent<float>.Unregister(Event.MoneyPreviewReceived, OnMoneyPreviewReceived);
     }
 
     private void Start()
     {
-        int currentIndex = 0;
-        foreach (ConstructionBase construction in ConstructionManager.Instance.availableConstructions)
-        {
-            GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
-            actionButtonList.Add(newButton);
-            newButton.GetComponent<LevelMenuButton>().index = currentIndex;
-            newButton.GetComponent<LevelMenuButton>().textButton.text = construction.Name;
-            newButton.GetComponent<LevelMenuButton>().displayedImage.sprite = construction.Image; 
-            newButton.GetComponent<Button>().onClick.AddListener(() => SelectPower(newButton));
-            currentIndex++;
-        }
-
         GetComponent<MoneyMenu>().displayedImage.sprite = moneySprite;
         OnMoneyChanged();
     }
@@ -50,19 +45,48 @@ public class LevelMenuInterface : MonoBehaviour
         ConstructionManager.Instance.ChangeSelectedConstruction(button.GetComponent<LevelMenuButton>().index);
     }
 
-    private void HideButtons()
+    private void OnDayStart()
     {
         foreach (GameObject button in actionButtonList)
         {
-            button.SetActive(false);
+            Destroy(button);
+        }
+
+        actionButtonList.Clear();
+        unlockInterface.gameObject.SetActive(false);
+    }
+
+    private void DisplayDaySummary(bool active)
+    {
+        summaryInterface.gameObject.SetActive(active);
+    }
+
+    private void DisplayDayUnlock(DayEventBase dayEvent)
+    { 
+        if (dayEvent != null)
+        {
+            unlockInterface.gameObject.SetActive(true);
+            unlockInterface.Display(dayEvent);
+        }
+        else
+        {
+            unlockInterface.gameObject.SetActive(false);
         }
     }
 
-    private void ShowButtons()
+    private void OnNightStart()
     {
-        foreach (GameObject button in actionButtonList)
+        int currentIndex = 0;
+
+        foreach (ConstructionBase construction in ConstructionManager.Instance.availableConstructions)
         {
-            button.SetActive(true);
+            GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
+            actionButtonList.Add(newButton);
+            newButton.GetComponent<LevelMenuButton>().index = currentIndex;
+            newButton.GetComponent<LevelMenuButton>().textButton.text = construction.Name;
+            newButton.GetComponent<LevelMenuButton>().displayedImage.sprite = construction.Image;
+            newButton.GetComponent<Button>().onClick.AddListener(() => SelectPower(newButton));
+            currentIndex++;
         }
     }
 

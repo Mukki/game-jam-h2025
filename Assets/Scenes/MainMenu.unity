@@ -749,6 +749,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfDay
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfNight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7804296191008146639, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
       propertyPath: m_Name
       value: Managers
@@ -1080,11 +1088,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a4b88ad7f34b49fb88703d0d3581c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 0.5
-  grabSpeed: 1
+  moveSpeed: 5
+  wiggleAmount: 0.2
+  wiggleCount: 2
+  wiggleAngle: 10
   retreatSpeed: 2.5
-  dissolveSpeed: 0.4
+  wiggleDuration: 0.1
 --- !u!4 &1337272732
 Transform:
   m_ObjectHideFlags: 0

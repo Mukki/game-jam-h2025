@@ -41,14 +41,13 @@ public class MainMenuController : MonoBehaviour
     private void OnDisable()
     {
         playButton.clicked -= OnPlayButtonClicked;
-
         rulesButton.clicked -= OnRulesButtonClicked;
-
         quitButton.clicked -= OnQuitButtonClicked;
     }
 
     private void OnPlayButtonClicked()
     {
+        SceneManager.sceneLoaded += GameManager.Instance.OnSceneLoaded;
         gameObject.SetActive(false);
         SceneManager.LoadScene("GameScene");
     }

@@ -15,6 +15,8 @@ public enum Event
     MoneyPreviewReceived,
     SpawnAnimal,
     KillAnimal,
+    DisplayDayEvent,
+    DisplayDaySummary
 }
 
 // This implementation does not support params, to add params, see the exemple below

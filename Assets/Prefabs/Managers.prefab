@@ -54,8 +54,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 00146f90810a4e64d85741b2d43a8070, type: 2}
   availableConstructions:
   - {fileID: 11400000, guid: 2d7fc77cb65d2394fb396627f0675d39, type: 2}
-  - {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}
-  - {fileID: 11400000, guid: 00146f90810a4e64d85741b2d43a8070, type: 2}
   allFences: []
   constructionsParent: {fileID: 0}
 --- !u!114 &6815954247098658578
@@ -76,6 +74,12 @@ MonoBehaviour:
   LenghtOfNight: 45
   StMethodeIsASecteurOfStFelicien: 0
   CurrentDay: 1
+  MenuMusic: {fileID: 0}
+  DayMusic: {fileID: 0}
+  NightMusic: {fileID: 0}
+  dayEvents:
+  - {fileID: 11400000, guid: ff67c51954ff4fb408ca6ef46962531a, type: 2}
+  - {fileID: 11400000, guid: d2eeb6bf36392364db88d809efae6123, type: 2}
 --- !u!114 &-2543112488069965812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,3 +101,4 @@ MonoBehaviour:
   - Type: 2
     Prefab: {fileID: 8390339972247351620, guid: 174105b71dc28744fabaf0c5ff5c1d8e, type: 3}
   _animals: []
+  SpawnOffset: 0.5

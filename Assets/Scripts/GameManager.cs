@@ -1,7 +1,7 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -19,38 +19,62 @@ public class GameManager : Singleton<GameManager>
     public AudioClip DayMusic;
     public AudioClip NightMusic;
 
-    protected override void OnAwake()
-    {
-        base.OnAwake();
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    public List<DayEventBase> dayEvents = new List<DayEventBase>(); 
 
     public void StartOfDay()
     {
+        Debug.Log("StartOfDay");
+        bool waitingForUnlockConfirmation = false;
+
+        foreach (DayEventBase dayEvent in dayEvents)
+        {
+            if (dayEvent.day == CurrentDay)
+            {
+                waitingForUnlockConfirmation = true;
+                dayEvent.OnUnlock();
+                GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, dayEvent);
+            }
+        }
+
+        if (!waitingForUnlockConfirmation)
+        {
+            OnStartOfDayCallback();
+        }
+    }
+
+    public void OnStartOfDayCallback()
+    {
+        Debug.Log("OnStartOfDayCallback");
+        GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, null);
         _couroutine = DayCycleCountDown(LenghtOfDay);
         StartCoroutine(_couroutine);
     }
 
     public void EndOfDay()
     {
+        Debug.Log("EndOfDay");
         StartOfNight();
     }
 
     public void StartOfNight()
     {
-         _couroutine = NightCycleCountDown(LenghtOfNight);
-         StartCoroutine(_couroutine);
+        Debug.Log("StartOfNight");
+        _couroutine = NightCycleCountDown(LenghtOfNight);
+        StartCoroutine(_couroutine);
     }
 
     public void EndOfNight()
     {
+        Debug.Log("EndOfNight");
         // if AnimalManager.Instance.animalCount == 0 -> GameOver();
-        // else StartOfDay();
+        // else displayDaySummary();
+
+        GameEvent<bool>.Call(Event.DisplayDaySummary, true);
+    }
+
+    public void OnEndOfNightCallback()
+    {
+        GameEvent<bool>.Call(Event.DisplayDaySummary, false);
         CurrentDay++;
         StartOfDay();
     }
@@ -82,8 +106,9 @@ public class GameManager : Singleton<GameManager>
         EndOfNight();
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartOfDay();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
