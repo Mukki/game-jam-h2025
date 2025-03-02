@@ -5,7 +5,8 @@ public enum AnimalTypes
 {
     Pig,
     Cow,
-    Chicken
+    Chicken,
+    Duck
 }
 
 [CreateAssetMenu(fileName = "AnimalStats", menuName = "Scriptable Objects/AnimalStats")]
