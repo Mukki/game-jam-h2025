@@ -12,12 +12,17 @@ public class BreedingManager : Singleton<BreedingManager>
         _couples.Add(new BreedingCouple() { ParentA = parentA, ParentB = parentB });
     }
 
-    public void RemoveCouple(AnimalStateMachine parentA, AnimalStateMachine parentB)
+    public void DestroyCouple(AnimalStateMachine parentA, AnimalStateMachine parentB)
     {
         _couples.RemoveAll(x => x.ParentA.ID == parentA.ID && x.ParentB.ID == parentB.ID);
     }
-    
-    public void RemoveCouple(BreedingCouple couple)
+
+    public void DestroyCouple(AnimalStateMachine parent)
+    {
+        _couples.RemoveAll(x => x.ParentA.ID == parent.ID || x.ParentB.ID == parent.ID);
+    }
+
+    public void DestroyCouple(BreedingCouple couple)
     {
         _couples.Remove(couple);
     }
@@ -56,7 +61,7 @@ public class BreedingManager : Singleton<BreedingManager>
             couple.ParentA.BirthedChild();
             couple.ParentB.BirthedChild();
 
-            RemoveCouple(couple);
+            DestroyCouple(couple);
         }
     }
 

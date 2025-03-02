@@ -35,7 +35,28 @@ public class AnimalManager : Singleton<AnimalManager>
     protected virtual void OnSpawnAnimal(AnimalTypes type, Vector3 spawnPosition)
     {
         spawnPosition.x += SpawnOffset;
+        SpawnAnimal(type, spawnPosition);
+    }
 
+    public void SpawnAnimalBasedOnTerrain(AnimalTypes type, GameObject terrain)
+    {
+        if (terrain.TryGetComponent<Collider>(out var collider))
+        {
+            var minPos = collider.bounds.min;
+            var maxPos = collider.bounds.max;
+
+            var targetPos = new Vector3(
+                UnityEngine.Random.Range(minPos.x, maxPos.x), 
+                0.5f, 
+                UnityEngine.Random.Range(minPos.z, maxPos.z)
+            );
+
+            SpawnAnimal(type, targetPos);
+        }
+    }
+
+    private void SpawnAnimal(AnimalTypes type, Vector3 spawnPosition)
+    {
         GameObject newAnimal = Instantiate(_prefabs[type], spawnPosition, Quaternion.identity);
         var asm = newAnimal.GetComponent<AnimalStateMachine>();
         asm.DayBorn = GameManager.Instance.CurrentDay;
@@ -50,6 +71,8 @@ public class AnimalManager : Singleton<AnimalManager>
         {
             var toRemove = _animals.FirstOrDefault(x => x.TryGetComponent<AnimalStateMachine>(out var xasm) 
                 && xasm.ID == asm.ID);
+
+            BreedingManager.Instance.DestroyCouple(asm);
 
             if (toRemove != null)
             {

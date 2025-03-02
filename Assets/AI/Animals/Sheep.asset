@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ccf4481edf825244af46070194657eb, type: 3}
-  m_Name: Cow
+  m_Name: Sheep
   m_EditorClassIdentifier: 
-  AnimalType: 1
-  RandomWanderRange: 6
+  AnimalType: 0
+  RandomWanderRange: 4
   StoppingDistanceOffset: 0.5
   BreedingCooldown: 2
-  MaxBabyPerDay: 2
-  SellValue: 1
+  MaxBabyPerDay: 1
+  SellValue: 7
   ViewRange:
-    Radius: 4
+    Radius: 3
     Offset: 2
   HormoneRange:
-    Radius: 6
+    Radius: 2
     Offset: 1
   SmellRange:
-    Radius: 5
+    Radius: 8
     Offset: 1
   HornyTimeRange:
-    Min: 150
-    Max: 200
+    Min: 50
+    Max: 100
   IdleTimeRange:
     Min: 100
     Max: 300
