@@ -24,6 +24,8 @@ public class GameManager : Singleton<GameManager>
     public void StartOfDay()
     {
         Debug.Log("StartOfDay");
+        SoundManager.Instance.MySource.clip = SoundManager.Instance.DayAudio;
+        SoundManager.Instance.MySource.Play();
         bool waitingForUnlockConfirmation = false;
 
         foreach (DayEventBase dayEvent in dayEvents)
@@ -59,6 +61,8 @@ public class GameManager : Singleton<GameManager>
     public void StartOfNight()
     {
         Debug.Log("StartOfNight");
+        SoundManager.Instance.MySource.clip = SoundManager.Instance.NightAudio;
+        SoundManager.Instance.MySource.Play();
         _couroutine = NightCycleCountDown(LenghtOfNight);
         StartCoroutine(_couroutine);
     }
@@ -95,6 +99,7 @@ public class GameManager : Singleton<GameManager>
         GameEvent.Call(Event.DayStart);
         yield return new WaitForSeconds(wait);
         GameEvent.Call(Event.DayEnd);
+        SoundManager.Instance.MySource.Stop();
         EndOfDay();
     }
 
@@ -103,6 +108,7 @@ public class GameManager : Singleton<GameManager>
         GameEvent.Call(Event.NightStart);
         yield return new WaitForSeconds(wait);
         GameEvent.Call(Event.NightEnd);
+        SoundManager.Instance.MySource.Stop();
         EndOfNight();
     }
 

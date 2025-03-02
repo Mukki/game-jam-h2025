@@ -24,6 +24,8 @@ public class MainMenuController : MonoBehaviour
     {
         ui = GetComponent<UIDocument>().rootVisualElement;
         StartCoroutine(VictimizeAnimals());
+        SoundManager.Instance.MySource.clip = SoundManager.Instance.MainMenuAudio;
+        SoundManager.Instance.MySource.Play();
     }
 
     private void OnEnable()
@@ -49,6 +51,7 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.sceneLoaded += GameManager.Instance.OnSceneLoaded;
         gameObject.SetActive(false);
+        SoundManager.Instance.MySource.Play();
         SceneManager.LoadScene("GameScene");
     }
 
