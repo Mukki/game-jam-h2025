@@ -18,6 +18,11 @@ public class ExecuteAnimalBaitedAction : FSMAction
             {
                 navAgent.isStopped = true;
                 navAgent.ResetPath();
+                navAgent.velocity = Vector3.zero;
+
+                var rb = asm.GetComponent<Rigidbody>();
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
             }
         }
     }

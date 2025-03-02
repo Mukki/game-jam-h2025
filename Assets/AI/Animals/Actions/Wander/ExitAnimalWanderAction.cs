@@ -11,5 +11,6 @@ public class ExitAnimalWanderAction : FSMAction
 
         navAgent.isStopped = true;
         navAgent.ResetPath();
+        navAgent.velocity = Vector3.zero;
     }
 }

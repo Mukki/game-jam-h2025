@@ -5,6 +5,7 @@ public class AnimalFoundFuckBuddy : Decision
 {
     public override bool Decide(BaseStateMachine stateMachine)
     {
-        return ((AnimalStateMachine)stateMachine).FuckTarget != null;
+        var asm = (AnimalStateMachine)stateMachine;
+        return BreedingManager.Instance.IsInAnyCouple(asm.ID);
     }
 }
