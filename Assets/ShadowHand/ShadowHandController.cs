@@ -1,69 +1,71 @@
 using UnityEngine;
+using System.Collections;
 
-public class ShadowHandController : MonoBehaviour
+public class CreepyHandController : MonoBehaviour
 {
-    public Transform target; // Object to grab
-    public float speed = 2f;
-    public float grabSpeed = 5f;
-    public float retreatSpeed = 3f;
-    public float dissolveSpeed = 2f;
-    
-    private Material handMaterial;
-    private float dissolveAmount = 0f;
-    private bool grabbing = false;
-    private bool retreating = false;
-    private Vector3 startPosition;
-    private Camera mainCamera;
+    public float moveSpeed = 5f;
+    public float wiggleAmount = 0.2f;
+    public int wiggleCount = 2;
+    public float retreatSpeed = 5f;
+
+    private Vector3 initialPosition;
+    private bool isInterrupted = false;
+    private Transform target;
 
     void Start()
     {
-        handMaterial = GetComponent<SpriteRenderer>().material;
-        startPosition = transform.position;
-        mainCamera = Camera.main;
+        initialPosition = transform.position;
     }
 
-    void Update()
+    public void Grab(GameObject newTarget)
     {
-        if (!grabbing && !retreating)
-        {
-            // Move towards target
-            transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * speed);
-        }
-
-        if (grabbing)
-        {
-            // Move faster toward the target
-            transform.position = Vector3.Lerp(transform.position, target.position, Time.deltaTime * grabSpeed);
-            dissolveAmount = Mathf.Lerp(dissolveAmount, 1f, Time.deltaTime * dissolveSpeed);
-            handMaterial.SetFloat("_DissolveAmount", dissolveAmount);
-
-            if (Vector3.Distance(transform.position, target.position) < 0.2f)
-            {
-                grabbing = false;
-                retreating = true;
-            }
-        }
-
-        if (retreating)
-        {
-            transform.position = Vector3.Lerp(transform.position, startPosition, Time.deltaTime * retreatSpeed);
-            dissolveAmount = Mathf.Lerp(dissolveAmount, 0f, Time.deltaTime * dissolveSpeed);
-            handMaterial.SetFloat("_DissolveAmount", dissolveAmount);
-
-            if (Vector3.Distance(transform.position, startPosition) < 0.5f)
-            {
-                retreating = false;
-            }
-        }
-    }
-    
-    void LateUpdate()
-    {
-        transform.rotation = mainCamera.transform.rotation;
+        if (target != null) return; // Ignore if already grabbing
+        target = newTarget.transform;
+        isInterrupted = false;
+        StopAllCoroutines();
+        StartCoroutine(MoveToTarget());
     }
 
-    public void Grab()
+    public void Interrupt()
     {
-        grabbing = true;
+        isInterrupted = true;
+    }
+
+    IEnumerator MoveToTarget()
+    {
+        while (!isInterrupted && target && Vector3.Distance(transform.position, target.position) > 0.05f)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.position, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        if (!isInterrupted && target)
+        {
+            yield return StartCoroutine(WiggleHand());
+            Destroy(target.gameObject);
+        }
+
+        yield return StartCoroutine(MoveToPosition(initialPosition, retreatSpeed));
+        target = null;
+    }
+
+    IEnumerator WiggleHand()
+    {
+        for (int i = 0; i < wiggleCount; i++)
+        {
+            transform.position += transform.right * wiggleAmount;
+            yield return new WaitForSeconds(0.1f);
+            transform.position -= transform.right * wiggleAmount;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    IEnumerator MoveToPosition(Vector3 destination, float speed)
+    {
+        while (Vector3.Distance(transform.position, destination) > 0.05f)
+        {
+            transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
+            yield return null;
+        }
     }
 }
