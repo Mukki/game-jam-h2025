@@ -136,7 +136,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!195 &2678347290543164284
 NavMeshAgent:
@@ -176,5 +176,10 @@ MonoBehaviour:
   CurrentState: {fileID: 0}
   _stats: {fileID: 11400000, guid: a94c1b8131d42f54396b8f4bb3464ce8, type: 2}
   RandomAnimalState: 0
+  FoodTarget: {fileID: 0}
   FuckTarget: {fileID: 0}
   WillSpawnBaby: 0
+  ForceToFuck: 0
+  ForceToSleep: 0
+  DayBorn: 1
+  CurrentBabyBorn: 0

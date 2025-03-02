@@ -15,5 +15,6 @@ public class EnterSelectRandomStateAction : FSMAction
         int selectedState = UnityEngine.Random.Range(0, maxRandomValue) + 1;
 
         asm.RandomAnimalState = (AnimalState)selectedState;
+        //asm.RandomAnimalState = AnimalState.Baited;
     }
 }

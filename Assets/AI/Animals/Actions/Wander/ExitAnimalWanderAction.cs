@@ -10,5 +10,6 @@ public class ExitAnimalWanderAction : FSMAction
         NavMeshAgent navAgent = asm.GetComponent<NavMeshAgent>();
 
         navAgent.isStopped = true;
+        navAgent.ResetPath();
     }
 }
