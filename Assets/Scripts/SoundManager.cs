@@ -7,4 +7,7 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip MainMenuAudio;
     public AudioClip DayAudio;
     public AudioClip NightAudio;
+    public AudioClip UnlockAudio;
+    public AudioClip MorningQueue;
+    public AudioClip NightQueue;
 }
