@@ -15,6 +15,10 @@ public class GameManager : Singleton<GameManager>
 
     private IEnumerator couroutine;
 
+    public AudioClip MenuMusic;
+    public AudioClip DayMusic;
+    public AudioClip NightMusic;
+
     protected override void OnAwake()
     {
         base.OnAwake();
