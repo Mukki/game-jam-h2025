@@ -78,6 +78,7 @@ public class GameManager : Singleton<GameManager>
     {
         Debug.Log("StartOfNight");
         SoundManager.Instance.MySource.clip = SoundManager.Instance.NightAudio;
+        SoundManager.Instance.MySource.loop = true;
         SoundManager.Instance.MySource.Play();
         _coroutine = NightCycleCountDown(LenghtOfNight);
         StartCoroutine(_coroutine);

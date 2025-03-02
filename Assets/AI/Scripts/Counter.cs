@@ -32,4 +32,6 @@ public class Counter
         CurrentTick = 0;
     }
 
+    public int GetCurrentTick() => CurrentTick;
+
 }
