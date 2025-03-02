@@ -32,6 +32,8 @@ public class AnimalStateMachine : BaseStateMachine
     public int MaxBabyPerDay => _stats.MaxBabyPerDay;
     public int SellValue => _stats.SellValue;
 
+    public Sprite Photo => _stats.Photo;
+
     public GameObject FoodTarget;
 
     public bool ForceToSleep = false;
