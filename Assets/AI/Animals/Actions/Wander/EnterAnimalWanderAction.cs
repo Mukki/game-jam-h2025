@@ -15,5 +15,6 @@ public class EnterAnimalWanderAction : FSMAction
         float z = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.z;
         Vector3 targetPosition = new(x, 0, z);
         navAgent.SetDestination(targetPosition);
+        navAgent.isStopped = false;
     }
 }

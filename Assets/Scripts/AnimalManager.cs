@@ -10,6 +10,8 @@ public class AnimalManager : Singleton<AnimalManager>
     [SerializeField] private List<GameObject> _animals = new();
     private IDictionary<AnimalTypes, GameObject> _prefabs = new SortedDictionary<AnimalTypes, GameObject>();
 
+    private int _dayDeath = 0;
+
     private void Start()
     {
         _prefabs = Prefabs.ToDictionary(key => key.Type, value => value.Prefab);
@@ -18,22 +20,40 @@ public class AnimalManager : Singleton<AnimalManager>
     private void OnEnable()
     {
         GameEvent<AnimalTypes, Vector3>.Register(Event.SpawnAnimal, OnSpawnAnimal);
+        GameEvent<GameObject>.Register(Event.KillAnimal, OnKillAnimal);
+        GameEvent.Register(Event.DayStart, OnDayStart);
     }
 
     private void OnDisable()
     {
         GameEvent<AnimalTypes, Vector3>.Unregister(Event.SpawnAnimal, OnSpawnAnimal);
+        GameEvent<GameObject>.Unregister(Event.KillAnimal, OnKillAnimal);
+        GameEvent.Unregister(Event.DayStart, OnDayStart);
     }
 
     protected virtual void OnSpawnAnimal(AnimalTypes type, Vector3 spawnPosition)
     {
         GameObject newAnimal = Instantiate(_prefabs[type], spawnPosition, Quaternion.identity);
+        newAnimal.GetComponent<AnimalStateMachine>().DayBorn = GameManager.Instance.CurrentDay;
         _animals.Add(newAnimal);
     }
 
+    protected virtual void OnKillAnimal(GameObject animal)
+    {
+        _dayDeath++;
+    }
+
+    protected virtual void OnDayStart()
+    {
+        _dayDeath = 0;
+    }
+
     public int GetAnimalCount() => _animals.Count;
-    public int GetAnimalOfTypeCount(AnimalTypes type) => _animals
+    public int GetAnimalCount(AnimalTypes type) => _animals
         .Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.AnimalType == type);
+    public int GetAnimalCount(int dayBorn) =>
+        _animals.Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.DayBorn == dayBorn);
+    public int GetAnimalDeath() => _dayDeath;
 }
 
 [Serializable]

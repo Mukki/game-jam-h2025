@@ -19,7 +19,7 @@ public abstract class ConstructionBase : ScriptableObject
 
     protected bool CanConstruct(float price)
     {
-        return GameManager.Instance.money >= price;
+        return GameManager.Instance.Money >= price;
     }
 
     protected void TryConstruct(float price)

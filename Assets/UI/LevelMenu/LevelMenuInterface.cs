@@ -68,7 +68,7 @@ public class LevelMenuInterface : MonoBehaviour
 
     public void OnMoneyChanged()
     {
-        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.money.ToString("0.00");
+        GetComponent<MoneyMenu>().currentMoney.text = " X " + GameManager.Instance.Money.ToString("0.00");
     }
 
     public void OnMoneyPreviewReceived(float amount)
