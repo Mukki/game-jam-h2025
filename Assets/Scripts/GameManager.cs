@@ -95,8 +95,12 @@ public class GameManager : Singleton<GameManager>
     public void EndOfNight()
     {
         Debug.Log("EndOfNight");
-        // if AnimalManager.Instance.animalCount == 0 -> GameOver();
-        // else displayDaySummary();
+        
+        if (AnimalManager.Instance.GetAnimalCount() == 0)
+        {
+            GameOver();
+        }
+
         Debug.Log("SummaryResults");
         SoundManager.Instance.MySource.clip = SoundManager.Instance.SumaryResult;
         SoundManager.Instance.MySource.loop = false;
@@ -118,6 +122,7 @@ public class GameManager : Singleton<GameManager>
         SoundManager.Instance.MySource.clip = SoundManager.Instance.Death;
         SoundManager.Instance.MySource.loop = false;
         SoundManager.Instance.MySource.Play();
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void PayMoney(float amount)
