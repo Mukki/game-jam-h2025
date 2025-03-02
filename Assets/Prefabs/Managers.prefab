@@ -106,6 +106,8 @@ MonoBehaviour:
     Prefab: {fileID: 8390339972247351620, guid: 174105b71dc28744fabaf0c5ff5c1d8e, type: 3}
   - Type: 3
     Prefab: {fileID: 6958564087417471777, guid: 2419cee0fe5104a479272ba91a5f418a, type: 3}
+  - Type: 4
+    Prefab: {fileID: 6958564087417471777, guid: 650ffbf8226a8d6459b9885a9f94d0e1, type: 3}
   _animals: []
   SpawnOffset: 0.5
 --- !u!114 &6902434374662470185
