@@ -21,6 +21,7 @@ public class AnimalStats : ScriptableObject
     public float BreedingCooldown = 2f;
     public int MaxBabyPerDay = 2;
     public int SellValue = 1;
+    public string ProductName;
 
     public Sprite Photo;
 

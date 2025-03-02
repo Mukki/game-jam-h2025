@@ -31,6 +31,7 @@ public class AnimalStateMachine : BaseStateMachine
     public FieldOfView SmellRange => _stats.SmellRange;
     public int MaxBabyPerDay => _stats.MaxBabyPerDay;
     public int SellValue => _stats.SellValue;
+    public string ProductName => _stats.ProductName;
 
     public Sprite Photo => _stats.Photo;
 
