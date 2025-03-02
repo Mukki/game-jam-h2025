@@ -71,9 +71,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _persistent: 1
-  Money: 0
-  LenghtOfDay: 0
-  LenghtOfNight: 0
+  Money: 100
+  LenghtOfDay: 15
+  LenghtOfNight: 45
   StMethodeIsASecteurOfStFelicien: 0
   CurrentDay: 1
 --- !u!114 &-2543112488069965812
