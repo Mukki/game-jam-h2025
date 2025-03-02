@@ -6,17 +6,18 @@ public class ConstructionManager : Singleton<ConstructionManager>
     public int currentConstruction = -1;
     public List<ConstructionBase> allConstructions = new List<ConstructionBase>();
     public List<ConstructionBase> availableConstructions = new List<ConstructionBase>();
-
-    public GameObject constructionMarkerPrefab;
-
-    private GameObject constructionMarker;
+    public List<GameObject> allFences = new List<GameObject>();
 
     public GameObject ghostPreview;
 
+    private bool isMouseOnTerrain = false;
+
     protected override void OnAwake()
     {
-        constructionMarker = Instantiate(constructionMarkerPrefab);
-        constructionMarker.SetActive(false);
+        foreach (ConstructionBase construction in allConstructions)
+        {
+            construction.Init();
+        }
     }
 
     private void Update()
@@ -38,7 +39,12 @@ public class ConstructionManager : Singleton<ConstructionManager>
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
-            ghostPreview.SetActive(true);
+            if (!isMouseOnTerrain)
+            {
+                availableConstructions[currentConstruction].OnMouseEnter();
+                isMouseOnTerrain = true;
+            }
+
             availableConstructions[currentConstruction].ProcessMove(hit.point);
 
             if (Input.GetMouseButtonDown(0))
@@ -46,9 +52,10 @@ public class ConstructionManager : Singleton<ConstructionManager>
                 availableConstructions[currentConstruction].ProcessClick(hit.point);
             }
         }
-        else
+        else if (isMouseOnTerrain)
         {
-            ghostPreview.SetActive(false);
+            availableConstructions[currentConstruction].OnMouseLeave();
+            isMouseOnTerrain = false;
         }
     }
 
@@ -70,8 +77,9 @@ public class ConstructionManager : Singleton<ConstructionManager>
         ghostPreview = Instantiate(availableConstructions[currentConstruction].ghostPrefab);
 
         Color color = ghostPreview.GetComponentInChildren<Renderer>().material.color;
-        color.a = 0.1f;
+        color.a = 0.4f;
         ghostPreview.GetComponentInChildren<Renderer>().material.color = color;
+        ghostPreview.GetComponentInChildren<Renderer>().material.SetFloat("SurfaceType", 1.0f);
 
         ghostPreview.SetActive(false);
 

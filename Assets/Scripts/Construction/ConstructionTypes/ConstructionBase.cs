@@ -8,13 +8,14 @@ public abstract class ConstructionBase : ScriptableObject
     public Sprite Image;
     public string Name;
 
-    protected GameObject ghostPreview;
-
     public abstract void ProcessClick(Vector3 position);
     public abstract void ProcessMove(Vector3 position);
     public abstract void ProcessCancel();
+    public abstract void OnMouseEnter();
+    public abstract void OnMouseLeave();
 
     public abstract void OnConstruct();
+    public abstract void Init();
 
     protected bool CanConstruct(float price)
     {

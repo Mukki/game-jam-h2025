@@ -1,11 +1,33 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ConstructionFence", menuName = "Scriptable Objects/Constructions/Fence")]
 public class ConstructionFence : ConstructionBase
 {
-    private bool firstPosSet = false;
+    public bool firstPosSet = false;
+    private List<GameObject> fences = new List<GameObject>();
     private Vector3 firstPos = Vector3.zero;
-    private Vector3 secondPos = Vector3.zero;
+
+    public override void Init()
+    {
+        firstPosSet = false;
+        fences = new List<GameObject>();
+        firstPos = Vector3.zero;
+    }
+
+    public override void OnMouseEnter()
+    {
+
+    }
+
+    public override void OnMouseLeave()
+    {
+        if (!firstPosSet)
+        {
+            ClearGhostFences();
+            GameEvent<float>.Call(Event.MoneyPreviewReceived, 0);
+        }
+    }
 
     public override void ProcessClick(Vector3 position)
     {
@@ -15,10 +37,7 @@ public class ConstructionFence : ConstructionBase
         }
         else
         {
-            secondPos = position;
-            float length = Vector3.Distance(firstPos, position);
-
-            TryConstruct(pricePerUnit * length);
+            TryConstruct(pricePerUnit * fences.Count);
         }
 
         firstPosSet = !firstPosSet;
@@ -28,39 +47,65 @@ public class ConstructionFence : ConstructionBase
     {
         if (!firstPosSet)
         {
-            ConstructionManager.Instance.ghostPreview.transform.position = position;
+            firstPos = position;
         }
-        else
-        {
-            UpdateGameObject(ConstructionManager.Instance.ghostPreview, position);
 
-            float length = Vector3.Distance(firstPos, position);
-            GameEvent<float>.Call(Event.MoneyPreviewReceived, pricePerUnit * length);
-        }
+        UpdateGameObject(position);
+        GameEvent<float>.Call(Event.MoneyPreviewReceived, pricePerUnit * fences.Count);
     }
 
     public override void ProcessCancel()
     {
         firstPosSet = false;
+        ClearGhostFences();
     }
 
     public override void OnConstruct()
     {
-        GameObject newFence = Instantiate(prefab, firstPos, Quaternion.identity);
-
-        UpdateGameObject(newFence, secondPos);
+        foreach (GameObject fence in fences)
+        {
+            GameObject newFence = Instantiate(prefab, fence.transform.position, fence.transform.rotation);
+            ConstructionManager.Instance.allFences.Add(newFence);
+        }
     }
 
-    private void UpdateGameObject(GameObject go, Vector3 targetPos)
+    private void UpdateGameObject(Vector3 targetPos)
     {
-        float length = Vector3.Distance(firstPos, targetPos);
+        float targetLength = Mathf.Max(1.0f, Mathf.Ceil(Vector3.Distance(firstPos, targetPos)));
 
-        Vector3 newScale = go.transform.localScale;
-        newScale.x = length;
-        go.transform.localScale = newScale;
+        while (fences.Count < targetLength)
+        {
+            fences.Add(Instantiate(ghostPrefab));
+        }
 
-        Vector3 newRotation = go.transform.eulerAngles;
+        while (fences.Count > targetLength)
+        {
+            Destroy(fences[fences.Count - 1]);
+            fences.RemoveAt(fences.Count - 1);
+        }
+
+        Vector3 position = firstPos;
+
+        Vector3 newRotation = Vector3.zero;
         newRotation.y = Vector3.SignedAngle(Vector3.right, targetPos - firstPos, Vector3.up);
-        go.transform.eulerAngles = newRotation;
+
+        foreach (GameObject fence in fences)
+        {
+            fence.transform.position = position;
+            fence.transform.eulerAngles = newRotation;
+
+            position.x += Mathf.Cos(Mathf.Deg2Rad * -newRotation.y);
+            position.z += Mathf.Sin(Mathf.Deg2Rad * -newRotation.y);
+        }
+    }
+
+    private void ClearGhostFences()
+    {
+        foreach (GameObject fence in fences)
+        {
+            Destroy(fence);
+        }
+
+        fences.Clear();
     }
 }
