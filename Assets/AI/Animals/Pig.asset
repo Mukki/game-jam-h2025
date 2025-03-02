@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Pig
   m_EditorClassIdentifier: 
   AnimalType: 0
-  RandomWanderRange: 3
+  RandomWanderRange: 6
   StoppingDistanceOffset: 0.5
   BreedingCooldown: 5
-  MaxBabyPerDay: 3
+  MaxBabyPerDay: 1
+  MoneyWorth: 5
   ViewRange:
     Radius: 5
     Offset: 3

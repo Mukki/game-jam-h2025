@@ -30,6 +30,7 @@ public class AnimalStateMachine : BaseStateMachine
     public FieldOfView HormoneRange => _stats.HormoneRange;
     public FieldOfView SmellRange => _stats.SmellRange;
     public int MaxBabyPerDay => _stats.MaxBabyPerDay;
+    public int SellValue => _stats.SellValue;
 
     public GameObject FoodTarget;
 
