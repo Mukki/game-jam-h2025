@@ -67,14 +67,14 @@ public class ConstructionManager : Singleton<ConstructionManager>
     public void ResetGhost()
     {
         Destroy(ghostPreview);
-        ghostPreview = Instantiate(availableConstructions[currentConstruction].prefab);
-
-        ghostPreview.GetComponentInChildren<Collider>().enabled = false;
+        ghostPreview = Instantiate(availableConstructions[currentConstruction].ghostPrefab);
 
         Color color = ghostPreview.GetComponentInChildren<Renderer>().material.color;
         color.a = 0.1f;
         ghostPreview.GetComponentInChildren<Renderer>().material.color = color;
 
         ghostPreview.SetActive(false);
+
+        GameEvent<float>.Call(Event.MoneyPreviewReceived, 0);
     }
 }

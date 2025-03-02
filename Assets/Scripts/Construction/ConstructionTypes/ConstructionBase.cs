@@ -4,6 +4,7 @@ public abstract class ConstructionBase : ScriptableObject
 {
     public float pricePerUnit;
     public GameObject prefab;
+    public GameObject ghostPrefab;
     public Sprite Image;
     public string Name;
 
@@ -27,7 +28,7 @@ public abstract class ConstructionBase : ScriptableObject
             ConstructionManager.Instance.ResetGhost();
             OnConstruct();
 
-            GameManager.Instance.money -= price;
+            GameManager.Instance.PayMoney(price);
         }
     }
 }

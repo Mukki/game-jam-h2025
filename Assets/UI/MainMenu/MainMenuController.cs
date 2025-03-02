@@ -32,6 +32,7 @@ public class MainMenuController : MonoBehaviour
     private void OnPlayButtonClicked()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.StartOfDay();
     }
 
     private void OnRulesButtonClicked()
