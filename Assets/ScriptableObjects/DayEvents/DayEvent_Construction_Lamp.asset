@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 214fc83faa7dc09499bcb31f9c18a53d, type: 3}
-  m_Name: Construction_Bait
+  m_Name: DayEvent_Construction_Lamp
   m_EditorClassIdentifier: 
-  day: 2
-  description: Use them to attract animals to a specific position!
+  notifyPlayer: 1
+  day: 4
+  description: Use them to scare demons away!
+  title: 'New contruction : Lamp'
   sprite: {fileID: 0}
-  newConstruction: {fileID: 11400000, guid: 00146f90810a4e64d85741b2d43a8070, type: 2}
+  newConstruction: {fileID: 11400000, guid: a2094aa81343cf8489bb092e49a814f0, type: 2}

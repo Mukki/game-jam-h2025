@@ -30,12 +30,16 @@ public class GameManager : Singleton<GameManager>
         {
             if (dayEvent.day == CurrentDay)
             {
-                waitingForUnlockConfirmation = true;
                 dayEvent.OnUnlock();
-                SoundManager.Instance.MySource.clip = SoundManager.Instance.UnlockAudio;
-                SoundManager.Instance.MySource.loop = false;
-                SoundManager.Instance.MySource.Play();
-                GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, dayEvent);
+
+                if (dayEvent.notifyPlayer)
+                {
+                    waitingForUnlockConfirmation = true;
+                    SoundManager.Instance.MySource.clip = SoundManager.Instance.UnlockAudio;
+                    SoundManager.Instance.MySource.loop = false;
+                    SoundManager.Instance.MySource.Play();
+                    GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, dayEvent);
+                }
             }
         }
 
