@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
     public float LenghtOfDay;
     public float LenghtOfNight;
 
-    public bool StMethodeIsASecteurOfStFelicien = true;
+    public bool StMethodeIsASecteurOfStFelicien = false;
 
     public int CurrentDay = 1;
 
