@@ -13,16 +13,22 @@ MonoBehaviour:
   m_Name: Pig
   m_EditorClassIdentifier: 
   AnimalType: 0
-  RandomWanderRange: 1.5
+  RandomWanderRange: 3
+  StoppingDistanceOffset: 0.5
+  BreedingCooldown: 5
+  MaxBabyPerDay: 3
   ViewRange:
-    Range: 3
-    Offset: 2
+    Radius: 5
+    Offset: 3
   HormoneRange:
-    Range: 4
+    Radius: 4
+    Offset: 1
+  SmellRange:
+    Radius: 8
     Offset: 1
   HornyTimeRange:
-    Min: 200
-    Max: 200
+    Min: 125
+    Max: 175
   IdleTimeRange:
     Min: 100
-    Max: 150
+    Max: 300
