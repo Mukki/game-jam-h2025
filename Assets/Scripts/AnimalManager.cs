@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class AnimalManager : Singleton<AnimalManager>
 {
@@ -72,7 +71,13 @@ public class AnimalManager : Singleton<AnimalManager>
         .Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.AnimalType == type);
     public int GetAnimalCount(int dayBorn) =>
         _animals.Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.DayBorn == dayBorn);
+
     public int GetAnimalDeathCount() => _dayDeath;
+
+    public int TotalValue() => _animals.Sum(x => x.GetComponent<AnimalStateMachine>().SellValue);
+    public int TotalValue(AnimalTypes type) => _animals
+        .Where(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.AnimalType == type)
+        .Sum(x => x.GetComponent<AnimalStateMachine>().SellValue);
 }
 
 [Serializable]

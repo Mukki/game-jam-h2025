@@ -17,6 +17,7 @@ public class AnimalStats : ScriptableObject
     public float StoppingDistanceOffset = 0.5f;
     public float BreedingCooldown = 2f;
     public int MaxBabyPerDay = 2;
+    public int SellValue = 1;
 
     public FieldOfView ViewRange = new()
     {

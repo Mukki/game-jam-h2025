@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Cow
   m_EditorClassIdentifier: 
   AnimalType: 1
-  RandomWanderRange: 6
+  RandomWanderRange: 3
   StoppingDistanceOffset: 0.5
   BreedingCooldown: 2
   MaxBabyPerDay: 2
+  MoneyWorth: 3
   ViewRange:
     Radius: 4
     Offset: 2

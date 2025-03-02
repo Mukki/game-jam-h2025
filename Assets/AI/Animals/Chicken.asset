@@ -17,6 +17,7 @@ MonoBehaviour:
   StoppingDistanceOffset: 0.5
   BreedingCooldown: 2
   MaxBabyPerDay: 4
+  MoneyWorth: 1
   ViewRange:
     Radius: 2
     Offset: 1.5
