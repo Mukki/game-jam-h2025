@@ -7,6 +7,6 @@ public class DayEventNewTerrain : DayEventBase
 
     public override void OnUnlock()
     {
-        AnimalSpawner.Instance.AddSpawnableTerrains(terrainCountToAdd);
+        StuffSpawner.Instance.AddSpawnableTerrains(terrainCountToAdd);
     }
 }

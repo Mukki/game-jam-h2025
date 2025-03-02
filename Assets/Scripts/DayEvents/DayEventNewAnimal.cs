@@ -7,6 +7,6 @@ public class DayEventNewAnimal : DayEventBase
 
     public override void OnUnlock()
     {
-        AnimalSpawner.Instance.availableAnimals.Add(newAnimalType);
+        StuffSpawner.Instance.availableAnimals.Add(newAnimalType);
     }
 }

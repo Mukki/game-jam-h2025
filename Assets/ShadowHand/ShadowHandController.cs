@@ -9,6 +9,7 @@ public class ShadowHandController : MonoBehaviour
     public float wiggleAngle = 10f;
     public float retreatSpeed = 5f;
     public float wiggleDuration = 0.1f;
+    public bool isFakeHand = false;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -96,5 +97,10 @@ public class ShadowHandController : MonoBehaviour
     void Update()
     {
         transform.LookAt(transform.position + mainCamera.transform.forward);
+
+        if (target == null && !isFakeHand)
+        {
+            Grab(AnimalManager.Instance.GetRandomAnimal());
+        }
     }
 }

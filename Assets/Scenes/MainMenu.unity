@@ -720,6 +720,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1218154752091995626, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: handCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4139426038685578908, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1595,6 +1599,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3966070705795375301, guid: 596e5a64d613aac4f857e0fa4ede9acb, type: 3}
+      propertyPath: isFakeHand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5002554747988116333, guid: 596e5a64d613aac4f857e0fa4ede9acb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.31
