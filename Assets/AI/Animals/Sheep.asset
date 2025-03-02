@@ -18,6 +18,7 @@ MonoBehaviour:
   BreedingCooldown: 2
   MaxBabyPerDay: 1
   SellValue: 7
+  ProductName: Wool
   Photo: {fileID: 21300000, guid: d2e40fd95041e5a4a8b6157b0808d12e, type: 3}
   ViewRange:
     Radius: 3

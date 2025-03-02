@@ -16,6 +16,7 @@ public class ShadowHandController : MonoBehaviour
     private bool isInterrupted = false;
     private Transform target;
     private Camera mainCamera;
+    private bool readyToNextTarget = true;
 
     void Start()
     {
@@ -28,6 +29,7 @@ public class ShadowHandController : MonoBehaviour
     {
         if (target != null) return; // Ignore if already grabbing
         target = newTarget.transform;
+        readyToNextTarget = false;
         isInterrupted = false;
         StopAllCoroutines();
         StartCoroutine(MoveToTarget());
@@ -53,6 +55,7 @@ public class ShadowHandController : MonoBehaviour
         }
 
         yield return StartCoroutine(MoveToPosition(initialPosition, retreatSpeed));
+        readyToNextTarget = true;
         target = null;
     }
 
@@ -98,9 +101,17 @@ public class ShadowHandController : MonoBehaviour
     {
         transform.LookAt(transform.position + mainCamera.transform.forward);
 
-        if (target == null && !isFakeHand)
+        if (readyToNextTarget && !isFakeHand)
         {
             Grab(AnimalManager.Instance.GetRandomAnimal());
+        }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Fence")
+        {
+            target = collider.transform;
         }
     }
 }

@@ -10,6 +10,8 @@ public class LevelMenuInterface : MonoBehaviour
     public GameObject buttonParent;
     public GameObject ProductInfoElementPrefab;
     public GameObject ContinueButtonPrefab;
+    public Sprite Money;
+
 
     public float ClockSpeed;
     public bool DayClockIsActive = false;
@@ -147,35 +149,41 @@ public class LevelMenuInterface : MonoBehaviour
 
     public void CreateInfos()
     {
-        foreach (var animalType in AnimalManager.Instance.GetAnimalTypesForTest())
+        foreach (var animalType in AnimalManager.Instance.GetAnimalInfos())
         {
             GameObject alive = Instantiate(ProductInfoElementPrefab,
                 summaryInterface.parentContainer.transform);
             var alivePanel = alive.GetComponent<SummaryPanel>();
-            //alivePanel.Image = "SOMETHING";
+            alivePanel.Image.sprite = animalType.Photo;
             alivePanel.Name.text = $"{animalType.ProductName}(s) sold for:";
             alivePanel.Quantity.text = AnimalManager.Instance.TotalValue(animalType.AnimalType).ToString();
             _productInfos.Add(alive);
 
+            /*
             GameObject dead = Instantiate(ProductInfoElementPrefab,
                 summaryInterface.parentContainer.transform);
             var deadPanel = dead.GetComponent<SummaryPanel>();
-            //dead.Image = "SOMETHING";
             deadPanel.Name.text = $"{Enum.GetName(typeof(AnimalTypes), animalType.AnimalType)} dead:";
             deadPanel.Quantity.text = AnimalManager.Instance.GetAnimalCount(animalType.AnimalType).ToString();
             _productInfos.Add(dead);
+            */
         }
 
         GameObject totalValue = Instantiate(ProductInfoElementPrefab,
             summaryInterface.parentContainer.transform);
         var totalValuePanel = totalValue.GetComponent<SummaryPanel>();
-        //dead.Image = "SOMETHING";
         totalValuePanel.Name.text = $"Total: ";
         totalValuePanel.Quantity.text = AnimalManager.Instance.TotalValue().ToString();
+
+        if(Money != null)
+        {
+            totalValuePanel.Image.sprite = Money;
+        }
         _productInfos.Add(totalValue);
 
         GameObject button = Instantiate(ContinueButtonPrefab,
             summaryInterface.parentContainer.transform);
+        button.GetComponent<Button>().onClick.AddListener(() => GameManager.Instance.OnEndOfNightCallback());
         _productInfos.Add(button);
     }
 
