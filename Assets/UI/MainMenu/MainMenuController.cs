@@ -81,6 +81,7 @@ public class MainMenuController : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(10, 15));
 
             animals[index] = Instantiate(animalPrefabs[Random.Range(0, animalPrefabs.Count)], animalSpawns[index].position, animalSpawns[index].rotation);
+            animals[index].transform.localScale = animalSpawns[index].localScale;
         }
     }
 }
