@@ -102,29 +102,27 @@ public class AnimalManager : Singleton<AnimalManager>
         .Where(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.AnimalType == type)
         .Sum(x => x.GetComponent<AnimalStateMachine>().SellValue);
 
-    public List<AnimalInfo> GetAnimalTypes() => 
-        _animals
-        .Select(x => new AnimalInfo()
-            {
-                AnimalType = x.GetComponent<AnimalStateMachine>().AnimalType,
-                ProductName = x.GetComponent<AnimalStateMachine>().ProductName,
-        })
-        .Distinct()
-        .ToList();
-
-    public List<AnimalInfo> GetAnimalTypesForTest() => new List<AnimalInfo>()
+    public List<AnimalInfo> GetAnimalInfos() 
     {
-        new AnimalInfo()
+        var infos = new List<AnimalInfo>();
+
+        foreach (var animal in _animals)
         {
-            AnimalType = AnimalTypes.Sheep,
-            ProductName = "Wool"
-        },
-        new AnimalInfo()
-        {
-            AnimalType = AnimalTypes.Cow,
-            ProductName = "Milk"
-        },
-    };
+            var asm = animal.GetComponent<AnimalStateMachine>();
+
+            if (!infos.Any(x => x.AnimalType == asm.AnimalType))
+            {
+                infos.Add(new AnimalInfo()
+                {
+                    AnimalType = asm.AnimalType,
+                    ProductName = asm.ProductName,
+                    Photo = asm.Photo,
+                });
+            }
+        }
+
+        return infos;
+    }
 }
 
 [Serializable]
@@ -136,6 +134,7 @@ public class AnimalPrefabs
 
 public class AnimalInfo
 {
+    public Sprite Photo;
     public AnimalTypes AnimalType;
     public string ProductName;
 }
