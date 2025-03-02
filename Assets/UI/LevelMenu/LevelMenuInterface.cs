@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -77,6 +76,20 @@ public class LevelMenuInterface : MonoBehaviour
         }
 
         actionButtonList.Clear();
+
+        int currentIndex = 0;
+        
+        foreach (ConstructionBase construction in ConstructionManager.Instance.availableConstructions)
+        {
+            GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
+            actionButtonList.Add(newButton);
+            newButton.GetComponent<LevelMenuButton>().index = currentIndex;
+            newButton.GetComponent<LevelMenuButton>().textButton.text = construction.Name;
+            newButton.GetComponent<LevelMenuButton>().displayedImage.sprite = construction.Image;
+            newButton.GetComponent<Button>().onClick.AddListener(() => SelectPower(newButton));
+            currentIndex++;
+        }
+
         unlockInterface.gameObject.SetActive(false);
         
         DayClockIsActive = true;
@@ -113,19 +126,6 @@ public class LevelMenuInterface : MonoBehaviour
 
     private void OnNightStart()
     {
-        int currentIndex = 0;
-
-        foreach (ConstructionBase construction in ConstructionManager.Instance.availableConstructions)
-        {
-            GameObject newButton = Instantiate(buttonPrefab, buttonParent.transform);
-            actionButtonList.Add(newButton);
-            newButton.GetComponent<LevelMenuButton>().index = currentIndex;
-            newButton.GetComponent<LevelMenuButton>().textButton.text = construction.Name;
-            newButton.GetComponent<LevelMenuButton>().displayedImage.sprite = construction.Image;
-            newButton.GetComponent<Button>().onClick.AddListener(() => SelectPower(newButton));
-            currentIndex++;
-        }
-
         NightClockIsActive = true;
     }
 

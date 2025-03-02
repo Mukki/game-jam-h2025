@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentContainer: {fileID: 9179492280452404676}
   summaryObj: {fileID: 2029591062628676179, guid: 63caba7e48de32c448603a993239ad87, type: 3}
+  MoneySprite: {fileID: 0}
 --- !u!114 &1739300791944881840
 MonoBehaviour:
   m_ObjectHideFlags: 0
