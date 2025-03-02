@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _persistent: 1
   MySource: {fileID: 570614259811841490}
-  MainMenuAudio: {fileID: 8300000, guid: 57579964ae167824a84c63bc3a01dbfc, type: 3}
+  MainMenuAudio: {fileID: 8300000, guid: 99ce6e7f6e3e10a4a8af259b627bd696, type: 3}
   DayAudio: {fileID: 8300000, guid: 4e926edbcb5909346bd20f1234a07496, type: 3}
   NightAudio: {fileID: 8300000, guid: 99ce6e7f6e3e10a4a8af259b627bd696, type: 3}
   UnlockAudio: {fileID: 8300000, guid: 8ebc2ab358300d943b4cc4b36226592e, type: 3}

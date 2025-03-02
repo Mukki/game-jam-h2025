@@ -83,6 +83,11 @@ public class AnimalManager : Singleton<AnimalManager>
         Destroy(animal);
     }
 
+    public GameObject GetRandomAnimal()
+    {
+        return _animals[UnityEngine.Random.Range(0, _animals.Count)];
+    }
+
     protected virtual void OnDayStart()
     {
         _dayDeath = 0;

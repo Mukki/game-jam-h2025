@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimalSpawner : Singleton<AnimalSpawner>
+public class StuffSpawner : Singleton<StuffSpawner>
 {
     public int minAnimalCountPerTerrain;
     public int maxAnimalCountPerTerrain;
     public int initialTerrainCount;
     public List<GameObject> allTerrains = new List<GameObject>();
     public List<AnimalTypes> availableAnimals = new List<AnimalTypes>();
+    public List<Transform> handSpawners = new List<Transform>();
 
     private List<GameObject> spawnableTerrains = new List<GameObject>();
 
