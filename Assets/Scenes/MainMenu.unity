@@ -760,6 +760,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfDay
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: LenghtOfNight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: dayEvents.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 1f39dc0e379809945a919caa37ef4103, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 17e3d26e836075e4b870374362ec47a4, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ff67c51954ff4fb408ca6ef46962531a, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d2eeb6bf36392364db88d809efae6123, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e1dc39a81189f6347b39f9a99210b071, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 74acf1ec42b193040a450774f88aa183, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c9cd3c06a709474cab2464b32a26762, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[7]'
+      value: 
+      objectReference: {fileID: 11400000, guid: eafdb2cbc7717d64f9d573224e124478, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[8]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b7520a165637cd644bb1ee2cd6f190a8, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[9]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d0718f7783fb99c4aacbee00c07ba9f7, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[10]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a41b4bd0ed982f84897d6cd9a0938f74, type: 2}
+    - target: {fileID: 6815954247098658578, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
+      propertyPath: 'dayEvents.Array.data[11]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d3622bb2b971cf45a838e1d47358670, type: 2}
     - target: {fileID: 7804296191008146639, guid: fd8909f25fd69c941b31e4a262d7d6f7, type: 3}
       propertyPath: m_Name
       value: Managers
