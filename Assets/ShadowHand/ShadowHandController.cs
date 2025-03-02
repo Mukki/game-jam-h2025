@@ -93,8 +93,8 @@ public class ShadowHandController : MonoBehaviour
         transform.rotation = targetRotation;
     }
 
-    void LateUpdate()
+    void Update()
     {
-        transform.rotation = mainCamera.transform.rotation;
+        transform.LookAt(transform.position + mainCamera.transform.forward);
     }
 }
