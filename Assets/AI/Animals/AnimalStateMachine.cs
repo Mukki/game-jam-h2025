@@ -27,6 +27,8 @@ public class AnimalStateMachine : BaseStateMachine
     public bool WillSpawnBaby = false;
     public bool ForceToFuck = false;
 
+    public bool ForceToSleep = false;
+
     protected override void Awake()
     {
         base.Awake();
@@ -35,6 +37,30 @@ public class AnimalStateMachine : BaseStateMachine
         _idleCounter.CheatCurrentTick(_stats.IdleTimeRange.Min + 1);
 
         _fuckSearchCounter = new Counter(_stats.HornyTimeRange.Min);
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        GameEvent.Register(Event.NightStart, ForceSleep);
+        GameEvent.Register(Event.NightEnd, ForceAwake);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        GameEvent.Unregister(Event.NightStart, ForceSleep);
+        GameEvent.Unregister(Event.NightEnd, ForceAwake);
+    }
+
+    private void ForceSleep()
+    {
+        ForceToSleep = true;
+    }
+
+    private void ForceAwake()
+    {
+        ForceToSleep = false;
     }
 
     /* Idle */
