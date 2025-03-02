@@ -32,7 +32,7 @@ public class AnimalManager : Singleton<AnimalManager>
     }
 
     public int GetAnimalCount() => _animals.Count;
-    public int GetAnimalOfTypeCount(AnimalTypes type) => _animals
+    public int GetAnimalCount(AnimalTypes type) => _animals
         .Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.AnimalType == type);
 }
 
