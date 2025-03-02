@@ -2,11 +2,11 @@ Shader "Custom/WigglyPulsatingBorder"
 {
     Properties
     {
-        _BorderSize ("Base Border Size", Range(0.05, 0.8)) = 0.15
+        _BorderSize ("Base Border Size", Range(0.00, 0.8)) = 0.15
         _WaveSpeed ("Wave Speed", Range(0, 5)) = 1.0
         _WaveStrength ("Wave Strength", Range(0, 0.1)) = 0.05
-        _WaveFrequency ("Wave Frequency", Range(1, 10)) = 2.0
-        _NoiseScale ("Noise Scale", Range(1, 20)) = 5.0
+        _WaveFrequency ("Wave Frequency", Range(0, 10)) = 2.0
+        _NoiseScale ("Noise Scale", Range(0, 20)) = 5.0
         _NoiseStrength ("Noise Strength", Range(0, 0.2)) = 0.05
     }
     SubShader
