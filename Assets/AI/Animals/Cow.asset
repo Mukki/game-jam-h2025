@@ -13,9 +13,16 @@ MonoBehaviour:
   m_Name: Cow
   m_EditorClassIdentifier: 
   AnimalType: 1
-  FieldOfViewRange: 2
-  FieldOfViewOffset: 3
-  RandomWanderRange: 1.5
+  RandomWanderRange: 5
+  ViewRange:
+    Range: 3
+    Offset: 2
+  HormoneRange:
+    Range: 4
+    Offset: 1
+  HornyTimeRange:
+    Min: 200
+    Max: 250
   IdleTimeRange:
     Min: 100
     Max: 150

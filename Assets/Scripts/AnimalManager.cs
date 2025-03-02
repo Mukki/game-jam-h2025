@@ -11,6 +11,8 @@ public class AnimalManager : Singleton<AnimalManager>
     private IDictionary<AnimalTypes, GameObject> _prefabs = new SortedDictionary<AnimalTypes, GameObject>();
 
     private int _dayDeath = 0;
+    public float SpawnOffset = 0.5f;
+
 
     private void Start()
     {
@@ -33,8 +35,12 @@ public class AnimalManager : Singleton<AnimalManager>
 
     protected virtual void OnSpawnAnimal(AnimalTypes type, Vector3 spawnPosition)
     {
+        spawnPosition.x += SpawnOffset;
+
         GameObject newAnimal = Instantiate(_prefabs[type], spawnPosition, Quaternion.identity);
-        newAnimal.GetComponent<AnimalStateMachine>().DayBorn = GameManager.Instance.CurrentDay;
+        var asm = newAnimal.GetComponent<AnimalStateMachine>();
+        asm.DayBorn = GameManager.Instance.CurrentDay;
+        asm.CurrentBabyBorn = asm.MaxBabyPerDay;
         _animals.Add(newAnimal);
     }
 
@@ -53,7 +59,7 @@ public class AnimalManager : Singleton<AnimalManager>
         .Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.AnimalType == type);
     public int GetAnimalCount(int dayBorn) =>
         _animals.Count(x => x.TryGetComponent<AnimalStateMachine>(out var asm) && asm.DayBorn == dayBorn);
-    public int GetAnimalDeath() => _dayDeath;
+    public int GetAnimalDeathCount() => _dayDeath;
 }
 
 [Serializable]

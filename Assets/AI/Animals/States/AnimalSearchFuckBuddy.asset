@@ -20,5 +20,6 @@ MonoBehaviour:
   ExitActions: []
   Transitions:
   - {fileID: 11400000, guid: e34844db6c585b04f88cedff3ce940b5, type: 2}
+  - {fileID: 11400000, guid: 9814666967ac563428b668c1920479c4, type: 2}
   - {fileID: 11400000, guid: da792a2c58793a94d8544909796745b3, type: 2}
   - {fileID: 11400000, guid: 0ff6ffb568e856e41a12f864edb6de72, type: 2}

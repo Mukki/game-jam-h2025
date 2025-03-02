@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     public int CurrentDay = 1;
 
-    private IEnumerator couroutine;
+    private IEnumerator _couroutine;
 
     protected override void OnAwake()
     {
@@ -28,8 +28,8 @@ public class GameManager : Singleton<GameManager>
 
     public void StartOfDay()
     {
-        couroutine = DayCycleCountDown(LenghtOfDay);
-        StartCoroutine(couroutine);
+        _couroutine = DayCycleCountDown(LenghtOfDay);
+        StartCoroutine(_couroutine);
     }
 
     public void EndOfDay()
@@ -39,8 +39,8 @@ public class GameManager : Singleton<GameManager>
 
     public void StartOfNight()
     {
-         couroutine = NightCycleCountDown(LenghtOfNight);
-         StartCoroutine(couroutine);
+         _couroutine = NightCycleCountDown(LenghtOfNight);
+         StartCoroutine(_couroutine);
     }
 
     public void EndOfNight()

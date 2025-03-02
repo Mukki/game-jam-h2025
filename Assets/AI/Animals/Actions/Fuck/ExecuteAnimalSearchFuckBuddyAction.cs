@@ -14,7 +14,7 @@ public class ExecuteAnimalSearchFuckBuddyAction : FSMAction
             Vector3 currentPosition = asm.transform.position;
             Vector3 forward = asm.transform.forward;
             var possibleTargets = Physics.OverlapSphere(currentPosition + forward * asm.HormoneRange.Offset, 
-                asm.HormoneRange.Range, LayerMask.GetMask("Animal"))
+                asm.HormoneRange.Radius, LayerMask.GetMask("Animal"))
                 .Where(x => x.gameObject != asm.gameObject);
 
             foreach (var target in possibleTargets)
