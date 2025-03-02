@@ -5,6 +5,7 @@ public class ForceToFuck : Decision
 {
     public override bool Decide(BaseStateMachine stateMachine)
     {
-        return ((AnimalStateMachine)stateMachine).ForceToFuck;
+        var asm = (AnimalStateMachine)stateMachine;
+        return BreedingManager.Instance.IsInAnyCouple(asm.ID);
     }
 }

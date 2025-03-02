@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b589c12c5fa989419b6803a2233044d, type: 3}
+  m_Name: FuckReachedToFuckWait
+  m_EditorClassIdentifier: 
+  Decision: {fileID: 11400000, guid: 417592965239b044484df2abca56a911, type: 2}
+  TrueState: {fileID: 11400000, guid: bfd65ec8d1270354386eb68935bc6482, type: 2}
+  FalseState: {fileID: 11400000, guid: 949058c69e3f7104392f9a151114bfe9, type: 2}

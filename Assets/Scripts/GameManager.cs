@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
 
     public int CurrentDay = 1;
 
-    private IEnumerator _couroutine;
+    private IEnumerator _coroutine;
 
     public AudioClip MenuMusic;
     public AudioClip DayMusic;
@@ -24,8 +24,6 @@ public class GameManager : Singleton<GameManager>
     public void StartOfDay()
     {
         Debug.Log("StartOfDay");
-        SoundManager.Instance.MySource.clip = SoundManager.Instance.DayAudio;
-        SoundManager.Instance.MySource.Play();
         bool waitingForUnlockConfirmation = false;
 
         foreach (DayEventBase dayEvent in dayEvents)
@@ -34,28 +32,42 @@ public class GameManager : Singleton<GameManager>
             {
                 waitingForUnlockConfirmation = true;
                 dayEvent.OnUnlock();
+                SoundManager.Instance.MySource.clip = SoundManager.Instance.UnlockAudio;
+                SoundManager.Instance.MySource.loop = false;
+                SoundManager.Instance.MySource.Play();
                 GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, dayEvent);
             }
         }
 
         if (!waitingForUnlockConfirmation)
         {
-            OnStartOfDayCallback();
+            SoundManager.Instance.MySource.clip = SoundManager.Instance.MorningQueue;
+            SoundManager.Instance.MySource.loop = false;
+            SoundManager.Instance.MySource.Play();
+            _coroutine = MorningQueue(3.0f);
+            StartCoroutine(_coroutine);
         }
     }
 
     public void OnStartOfDayCallback()
     {
         Debug.Log("OnStartOfDayCallback");
+        SoundManager.Instance.MySource.clip = SoundManager.Instance.DayAudio;
+        SoundManager.Instance.MySource.loop = true;
+        SoundManager.Instance.MySource.Play();
         GameEvent<DayEventBase>.Call(Event.DisplayDayEvent, null);
-        _couroutine = DayCycleCountDown(LenghtOfDay);
-        StartCoroutine(_couroutine);
+        _coroutine = DayCycleCountDown(LenghtOfDay);
+        StartCoroutine(_coroutine);
     }
 
     public void EndOfDay()
     {
         Debug.Log("EndOfDay");
-        StartOfNight();
+        SoundManager.Instance.MySource.clip = SoundManager.Instance.NightQueue;
+        SoundManager.Instance.MySource.loop = false;
+        SoundManager.Instance.MySource.Play();
+        _coroutine = NightQueue(6.0f);
+        StartCoroutine(_coroutine);
     }
 
     public void StartOfNight()
@@ -63,8 +75,8 @@ public class GameManager : Singleton<GameManager>
         Debug.Log("StartOfNight");
         SoundManager.Instance.MySource.clip = SoundManager.Instance.NightAudio;
         SoundManager.Instance.MySource.Play();
-        _couroutine = NightCycleCountDown(LenghtOfNight);
-        StartCoroutine(_couroutine);
+        _coroutine = NightCycleCountDown(LenghtOfNight);
+        StartCoroutine(_coroutine);
     }
 
     public void EndOfNight()
@@ -110,6 +122,18 @@ public class GameManager : Singleton<GameManager>
         GameEvent.Call(Event.NightEnd);
         SoundManager.Instance.MySource.Stop();
         EndOfNight();
+    }
+
+    private IEnumerator MorningQueue(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        OnStartOfDayCallback();
+    }
+
+    private IEnumerator NightQueue(float wait)
+    {
+        yield return new WaitForSeconds(wait);
+        StartOfNight();
     }
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)

@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,11 +11,20 @@ public class EnterAnimalWanderAction : FSMAction
         asm.RandomAnimalState = AnimalState.None;
 
         NavMeshAgent navAgent = asm.GetComponent<NavMeshAgent>();
+        NavMeshPath navMeshPath = new();
+        Vector3 targetPosition;
         Vector3 currentPosition = asm.transform.position;
-        float x = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.x;
-        float z = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.z;
-        Vector3 targetPosition = new(x, 0, z);
-        navAgent.SetDestination(targetPosition);
+
+        do
+        {
+            float x = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.x;
+            float y = asm.transform.position.y;
+            float z = Random.Range(-asm.RandomWanderRange, asm.RandomWanderRange) + currentPosition.z;
+            targetPosition = new(x, y, z);
+            navAgent.SetDestination(targetPosition);
+            asm.transform.LookAt(targetPosition);
+        } while (!navAgent.CalculatePath(targetPosition, navMeshPath) || navMeshPath.status != NavMeshPathStatus.PathComplete);
+
         navAgent.isStopped = false;
     }
 }

@@ -23,11 +23,13 @@ public class EnterAnimalBaitedAction : FSMAction
 
             Vector3 foodPosition = asm.FoodTarget.transform.position;
             float x = foodPosition.x;
+            float y = asm.transform.position.y;
             float z = foodPosition.z;
-            Vector3 targetPosition = new(x, 0, z);
+            Vector3 targetPosition = new(x, y, z);
 
             navAgent.SetDestination(targetPosition);
             navAgent.isStopped = false;
+            asm.transform.LookAt(targetPosition);
         }
         else
         {

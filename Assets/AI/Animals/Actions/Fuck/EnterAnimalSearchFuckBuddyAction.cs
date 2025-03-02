@@ -7,7 +7,5 @@ public class EnterAnimalSearchFuckBuddyAction : FSMAction
     {
         var asm = (AnimalStateMachine)stateMachine;
         asm.ResetSearchFuckCounter();
-        asm.FuckTarget = null;
-        asm.WillSpawnBaby = false;
     }
 }
